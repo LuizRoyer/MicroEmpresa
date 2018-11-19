@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import Fornecedor from './model/fornecedor';
 import Endereco from './model/endereco';
 import Produto from './model/produto';
+import Cliente from './model/cliente';
 
 const app = express();
 const router = express.Router();
@@ -83,7 +84,7 @@ router.route('/Fornecedor/delete/:id').get((req, res) => {
     })
 })
 
-//  Roda Endereço
+//  Endereço -------------------------------------------------------------------------------------------
 router.route('/Endereco').get((req, res) => {
     Endereco.find((err, endereco) => {
         if (err)
@@ -143,7 +144,7 @@ router.route('/Endereco/delete/:id').get((req, res) => {
     })
 })
 
-// Produto
+// Produto -----------------------------------------------------------------------------------------
 router.route('/Produto').get((req, res) => {
     Produto.find((err, produto) => {
         if (err)
@@ -185,7 +186,7 @@ router.route('/Produto/update/:id').post((req, res) => {
             produto.unidade = req.body.unidade;
             produto.tipo = req.body.tipo;
 
-            produto.save().then(fornecedor => {
+            produto.save().then(produto => {
                 res.json('Produto Atualizado');
             }).catch(err => {
                 res.status(400).send('falha ao Atualizar o Produto');
@@ -203,6 +204,66 @@ router.route('/Produto/delete/:id').get((req, res) => {
     })
 })
 
+// Cliente -----------------------------------------------------------------------------------------
+router.route('/Cliente').get((req, res) => {
+    Cliente.find((err, cliente) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(cliente);
+    });
+});
+
+router.route('/Cliente/:id').get((req, res) => {
+    Cliente.findById(req.params.id, (err, cliente) => {
+        if (err)
+            console.log(err)
+        else
+            res.json(cliente);
+    });
+});
+
+router.route('/Cliente/add').post((req, res) => {
+    let cliente = new Cliente(req.body);
+    cliente.save()
+        .then(produto => {
+            res.status(200).json({ 'cliente': ' Cliente adicionado com sucesso' });
+        }).catch(err => {
+            res.status(400).send('Erro ao adicionar um Cliente');
+        });
+});
+
+router.route('/Cliente/update/:id').post((req, res) => {
+    Cliente.findById(req.params.id, (err, cliente) => {
+        if (!cliente)
+            return next(new Error('Nao consegui abrir o arquivo'));
+        else {
+            cliente.codigo = req.body.descricao;
+            cliente.nome = req.body.descricao;
+            cliente.CPF = req.body.descricao;
+            cliente.dataNascimento = req.body.descricao;
+            cliente.telefone = req.body.descricao;
+            cliente.celular = req.body.descricao;
+            cliente.email = req.body.descricao;
+            cliente.cep = req.body.descricao;
+
+            cliente.save().then(cliente => {
+                res.json('Produto Atualizado');
+            }).catch(err => {
+                res.status(400).send('falha ao Atualizar o Produto');
+            });
+        }
+    });
+});
+
+router.route('/Cliente/delete/:id').get((req, res) => {
+    Cliente.findByIdAndRemove({ _id: req.params.id }, (err, cliente) => {
+        if (err)
+            res.json(err);
+        else
+            res.json('Deletado com sucesso');
+    })
+})
 
 
 app.use('/', router);

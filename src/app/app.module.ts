@@ -23,8 +23,8 @@ import { VendaListComponent } from './Venda/venda-list/venda-list.component';
 import { VendaEditComponent } from './Venda/venda-edit/venda-edit.component';
 import { VendaCreateComponent } from './Venda/venda-create/venda-create.component';
 import { MenuComponent } from './Menu/menu/menu.component';
-import { CompraListComponent } from './Compra/compra-list/compra-list.component';
 import { CompraCreateComponent } from './Compra/compra-create/compra-create.component';
+import { CompraListComponent } from './Compra/compra-list/compra-list.component';
 import { CompraEditComponent } from './Compra/compra-edit/compra-edit.component';
 
 // npm rum dev  roda o aplicativo
@@ -32,10 +32,26 @@ const routes: Routes = [
   { path: 'fornecedorcreate', component: FornecedorCreateComponent },
   { path: 'fornecedoredit/:id', component: FornecedorEditComponent },
   { path: 'fornecedorlist', component: FornecedorListComponent },
+
   { path: 'produtocreate', component: ProdutoCreateComponent },
   { path: 'produtoedit/:id', component: ProdutoEditComponent },
   { path: 'produtolist', component: ProdutoListComponent },  
-  { path: '', redirectTo: 'fornecedorlist', pathMatch: 'full' }
+
+  { path: 'clientecreate', component: ClienteCreateComponent },
+  { path: 'clienteedit/:id', component: ClienteEditComponent },
+  { path: 'clientelist', component: ClienteListComponent },  
+
+  { path: 'compracreate', component: CompraCreateComponent },
+  { path: 'compraedit/:id', component:CompraEditComponent },
+  { path: 'compralist', component: CompraListComponent },  
+
+  { path: 'vendacreate', component: VendaCreateComponent },
+  { path: 'vendaedit/:id', component: VendaEditComponent },
+  { path: 'vendalist', component: VendaListComponent },  
+ 
+  { path: 'menu', component: MenuComponent },  
+
+  { path: '', redirectTo: 'menu', pathMatch: 'full' }
 ];
 @NgModule({
   declarations: [
@@ -52,10 +68,7 @@ const routes: Routes = [
     VendaListComponent,
     VendaEditComponent,
     VendaCreateComponent,
-    MenuComponent,
-    CompraListComponent,
-    CompraCreateComponent,
-    CompraEditComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,

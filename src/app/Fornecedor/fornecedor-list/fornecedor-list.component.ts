@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 
 import { IFornecedor } from 'interface/fornecedor.model';
-import { Endereco } from 'model/Endereco';
+import { Endereco } from 'model/endereco';
 import { EnderecoService } from 'src/app/service/endereco.service';
 import { IEnderecoFornecedor } from 'interface/enderecoFornecedor.model';
 import { IEndereco } from 'interface/endereco.model';
