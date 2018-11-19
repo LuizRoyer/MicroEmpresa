@@ -1,0 +1,72 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Novo Produto</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br><br>
+
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Nome do Produto" formControlName="descricao" #descricao>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Valor" formControlName="valorUnitario" #valorUnitario>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Observações" formControlName="observacao" #observacao>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Marca" formControlName="marca" #marca>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width-combo">
+        <mat-select placeholder="Tamanho" formControlName="tamanho" #tamanho>
+            <mat-option value="PP"> PP</mat-option>   
+          <mat-option value="P"> P</mat-option>
+          <mat-option value="M"> M</mat-option>
+          <mat-option value="G"> G</mat-option>
+          <mat-option value="GG"> GG</mat-option>
+          <mat-option value="XG"> XG</mat-option>
+          <mat-option value="XGG"> XGG</mat-option>
+          <mat-option value="XXG"> XXG</mat-option>              
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field-full-width-combo">
+        <mat-select placeholder="Unidade" formControlName="unidade" #unidade>
+          <mat-option value="Peca"> Peca</mat-option>
+          <mat-option value="Conjunto"> Conjunto</mat-option>
+          <mat-option value="pacote12"> pacote c/ 12 </mat-option>
+          <mat-option value="pacote6"> pacote c/ 6</mat-option>
+          <mat-option value="unidade"> Unidade</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field-full-width-combo">
+        <mat-select placeholder="Tipo" formControlName="tipo" #tipo>
+          <mat-option value="calca"> Calça</mat-option>
+          <mat-option value="camisaM"> Camisa Manga </mat-option>
+          <mat-option value="regata"> Regata </mat-option>
+          <mat-option value="camisaMC"> Camisa Manga Comprida</mat-option>
+          <mat-option value="bermuda"> Bermuda</mat-option>
+          <mat-option value="lenco"> Lenço</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/produtolist">Voltar</button>
+      <br><br>
+      <button type="submit" (click)="addProduto(descricao.value, valorUnitario.value, observacao.value,
+       marca.value, tamanho.value, unidade.value, tipo.value)"
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary"> Salvar</button>
+
+    </form>
+  </mat-card>
+
+</div>

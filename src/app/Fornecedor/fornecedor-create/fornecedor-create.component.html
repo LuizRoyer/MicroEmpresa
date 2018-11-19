@@ -1,0 +1,97 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Novo Fornecedor</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br><br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Nome do Fornecedor" formControlName="nome" #nome>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Nome Fanatasia do Fornecedor" formControlName="nomeFantasia" #nomeFantasia>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="CNPJ do Fornecedor" formControlName="CNPJ" #CNPJ>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Atividade / Ramo" formControlName="atividade" #atividade>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Telefone Residencial" formControlName="telefone" #telefone>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Celular" formControlName="celular" #celular>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="E-mail" formControlName="email" #email>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Observaçoes" formControlName="observacao" #observacao>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width-combo">
+        <mat-select placeholder="Status" formControlName="status" #status>
+          <mat-option value="Ativo"> Ativo</mat-option>
+          <mat-option value="Inativo"> Inativo</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Cep" formControlName="cep" #cep>
+        <button mat-button color="primary" (click)="buscar(cep.value)">Procurar Cep</button>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Endereço" formControlName="logradouro" #logradouro>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Numero" formControlName="numero" #numero>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Complemento" formControlName="complemento" #complemento>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Bairro" formControlName="bairro" #bairro>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Cidade" formControlName="localidade" #localidade>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width-combo">
+        <mat-select placeholder="Estado" formControlName="uf" #uf>
+          <mat-option value="SC"> SC</mat-option>
+          <mat-option value="PR"> PR</mat-option>
+          <mat-option value="RJ"> RJ</mat-option>
+          <mat-option value="SP"> SP</mat-option>
+          <mat-option value="RS"> RS</mat-option>
+          <mat-option value="DF"> DF</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/fornecedorlist">Voltar</button>
+
+      <button type="submit" (click)="addFornecedor(nome.value, nomeFantasia.value, status.value, CNPJ.value, 
+      atividade.value, telefone.value, celular.value, email.value, observacao.value, cep.value,
+      logradouro.value, numero.value, complemento.value, bairro.value, localidade.value, uf.value)"
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary"> Salvar</button>
+
+    </form>
+  </mat-card>
+
+</div>
