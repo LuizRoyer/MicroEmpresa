@@ -16,6 +16,16 @@ import { EnderecoService } from './service/endereco.service';
 import { ProdutoListComponent } from './Produto/produto-list/produto-list.component';
 import { ProdutoEditComponent } from './Produto/produto-edit/produto-edit.component';
 import { ProdutoCreateComponent } from './Produto/produto-create/produto-create.component';
+import { ClienteListComponent } from './Cliente/cliente-list/cliente-list.component';
+import { ClienteEditComponent } from './Cliente/cliente-edit/cliente-edit.component';
+import { ClienteCreateComponent } from './Cliente/cliente-create/cliente-create.component';
+import { VendaListComponent } from './Venda/venda-list/venda-list.component';
+import { VendaEditComponent } from './Venda/venda-edit/venda-edit.component';
+import { VendaCreateComponent } from './Venda/venda-create/venda-create.component';
+import { MenuComponent } from './Menu/menu/menu.component';
+import { CompraListComponent } from './Compra/compra-list/compra-list.component';
+import { CompraCreateComponent } from './Compra/compra-create/compra-create.component';
+import { CompraEditComponent } from './Compra/compra-edit/compra-edit.component';
 
 // npm rum dev  roda o aplicativo
 const routes: Routes = [
@@ -35,7 +45,17 @@ const routes: Routes = [
     FornecedorListComponent,
     ProdutoListComponent,
     ProdutoEditComponent,
-    ProdutoCreateComponent
+    ProdutoCreateComponent,
+    ClienteListComponent,
+    ClienteEditComponent,
+    ClienteCreateComponent,
+    VendaListComponent,
+    VendaEditComponent,
+    VendaCreateComponent,
+    MenuComponent,
+    CompraListComponent,
+    CompraCreateComponent,
+    CompraEditComponent
   ],
   imports: [
     BrowserModule,

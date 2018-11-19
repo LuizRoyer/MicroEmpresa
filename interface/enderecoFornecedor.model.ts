@@ -1,4 +1,4 @@
-import { Endereco } from '../model/Endereco';
+import { IEndereco } from '../interface/endereco.model';
 
 export interface IEnderecoFornecedor {
     id: String;
@@ -12,5 +12,5 @@ export interface IEnderecoFornecedor {
     email: String;
     observacao: String;  
     cep:String;    
-   endereco: Endereco;
+   endereco: IEndereco;
   }

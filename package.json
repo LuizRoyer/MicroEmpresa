@@ -1,8 +1,8 @@
 {
   "name": "controle-micro-empresa",
   "version": "0.0.0",
-  "scripts": { 
-    "test": "ng test",    
+  "scripts": {
+    "test": "ng test",
     "dev": "babel-watch server.js"
   },
   "private": true,

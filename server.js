@@ -93,8 +93,8 @@ router.route('/Endereco').get((req, res) => {
     });
 });
 
-router.route('/Endereco/:cep').get((req, res) => {
-    Endereco.findOne({ cep: req.params.cep }, (err, endereco) => {
+router.route('/Endereco/:id').get((req, res) => {
+    Endereco.findById(req.params.id, (err, endereco) => {
         if (err)
             console.log(err)
         else
@@ -112,8 +112,8 @@ router.route('/Endereco/add').post((req, res) => {
         });
 });
 
-router.route('/Endereco/update/:cep').post((req, res) => {
-    Endereco.findById(req.params.cep, (err, endereco) => {
+router.route('/Endereco/update/:id').post((req, res) => {
+    Endereco.findById(req.params.id, (err, endereco) => {
         if (!endereco)
             return next(new Error('Nao consegui abrir o arquivo'));
         else {
@@ -134,8 +134,8 @@ router.route('/Endereco/update/:cep').post((req, res) => {
     });
 });
 
-router.route('/Endereco/delete/:cep').get((req, res) => {
-    Endereco.findByIdAndRemove({ _cep: req.params.cep }, (err, endereco) => {
+router.route('/Endereco/delete/:id').get((req, res) => {
+    Endereco.findByIdAndRemove({ _id: req.params.id }, (err, produto) => {
         if (err)
             res.json(err);
         else
