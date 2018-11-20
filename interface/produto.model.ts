@@ -1,7 +1,7 @@
 export interface IProduto {
 
     descricao: String;
-    valorUnitario: number;
+    valorUnitario: Number;
     observacao: string;
     marca: String;
     tamanho: String; 

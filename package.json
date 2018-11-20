@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "test": "ng test",
-    "dev": "babel-watch server.js"
+    "dev": "babel-watch Server/server.js"
   },
   "private": true,
   "dependencies": {

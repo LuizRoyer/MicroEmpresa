@@ -68,7 +68,10 @@ const routes: Routes = [
     VendaListComponent,
     VendaEditComponent,
     VendaCreateComponent,
-    MenuComponent
+    MenuComponent,
+    CompraCreateComponent,
+    CompraEditComponent,
+    CompraListComponent
   ],
   imports: [
     BrowserModule,
