@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'clientelist', component: ClienteListComponent },
 
   { path: 'compracreate', component: CompraCreateComponent },
-  { path: 'compraedit/:id', component: CompraEditComponent },
+  { path: 'compraedit/:id', component:CompraEditComponent },
   { path: 'compralist', component: CompraListComponent },
 
   { path: 'vendacreate', component: VendaCreateComponent },
@@ -71,13 +71,8 @@ const routes: Routes = [
     VendaCreateComponent,
     MenuComponent,
     CompraCreateComponent,
-<<<<<<< HEAD
     CompraEditComponent,
     CompraListComponent
-=======
-    CompraListComponent,
-    CompraEditComponent
->>>>>>> e18df0fc10bc969785404b4c2bb4cac4fe772bcf
   ],
   imports: [
     BrowserModule,
@@ -99,7 +94,7 @@ const routes: Routes = [
     HttpModule,
     FormsModule
   ],
-  providers: [FornecedorService, EnderecoService],
+  providers: [FornecedorService,EnderecoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
