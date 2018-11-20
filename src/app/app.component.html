@@ -1,9 +1,3 @@
-<mat-toolbar>
-
-</mat-toolbar>
-
-<div>
-</div>
 
 <header>
   <section class="texste">
@@ -11,22 +5,20 @@
   </section>
   <nav class="teste">
       <dl class="menuPrincipal">
-          <dt><a href="index.html">Inicio</a></dt>
-          <dt><a href="#">Produto</a></dt>
-          <dt><a href="#">Fornecedor</a></dt>
-          <dt><a href="#">Cliente</a></dt>
-          <dt><a href="#">Compra</a></dt>
-          <dt><a href="#">Venda</a></dt>
+          <dt><a routerLink="/menu">Inicio</a></dt>
+          <dt><a routerLink="/produtolist">Produto</a></dt>
+          <dt><a routerLink="/fornecedorlist">Fornecedor</a></dt>
+          <dt><a routerLink="/clientelist">Cliente</a></dt>
+          <dt><a routerLink="/compralist">Compra</a></dt>
+          <dt><a routerLink="/vendalist">Venda</a></dt>
       </dl>
   </nav>
   <h1 class="tituloPrincipal">Jeh Butique</h1>
 
 </header>
-<!--
-
--->
 
 <router-outlet></router-outlet>
+
 <footer class="footer-container">
   <a href="#" class="icon-facebook footer-container-icon"></a>
   <a href="#" class="icon-twitter footer-container-icon"></a>
