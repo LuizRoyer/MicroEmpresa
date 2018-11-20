@@ -1,0 +1,160 @@
+nav {
+  margin: 0px;
+}
+
+.tituloPrincipal {
+  text-transform: uppercase;
+  font-size: 2.5em;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  /*box-shadow: 30px 0 10px -20px black;*/
+  text-shadow: 2px 5px #fff;
+}
+
+.header-conteiner-imagem {
+  height: 0px;
+  width: 0px;
+  background: yellow;
+}
+
+.menuPrincipal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.menuPrincipal dt a {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.menuPrincipal dt {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  list-style-position: outside;
+  font-size: 17px;
+  margin: 0;
+  background-color: #000;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.menuPrincipal dt a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-container {
+  clear: both;
+}
+
+.menuPrincipal dt:hover {
+  text-decoration: none;
+  color: #00f;
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.imagemPrincipal {
+  width: 100px;
+  height: 100px;
+}
+
+.footer-container {
+  background-color: #000;
+  height: 150px;
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+.footer-container-icon {
+  display: inline-block;
+  float: right;
+  font-size: 1.5rem;
+  padding: 0.1rem 0.8rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-container-icon:hover {
+  color: #aaa;
+}
+
+.footer-container-texto {
+  clear: both;
+}
+
+.footer-container p {
+  display: block;
+  margin: 0;
+}
+
+/* --- MEDIA ---*/
+
+@media screen and (min-width: 700px) {
+  .tituloPrincipal {
+    font-size: 4em;
+  }
+
+  .teste,
+  .menuPrincipal {
+    display: block;
+  }
+
+  .menuPrincipal dt {
+    display: inline-block;
+    width: 16.665%;
+  }
+
+  .menuPrincipal dt a {
+    text-transform: uppercase;
+    letter-spacing: 0em;
+  }
+  .texste {
+    width: 100%;
+  }
+
+  .header-conteiner-imagem {
+    height: 500px;
+    width: 100%;
+    background-image: url("../assets/fotoLoja.jpg");
+    background-position: top right;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .tituloPrincipal {
+    font-size: 4em;
+  }
+
+  .teste,
+  .menuPrincipal {
+    display: block;
+  }
+
+  .menuPrincipal dt {
+    display: inline-block;
+    width: 16.665%;
+  }
+
+  .menuPrincipal dt a {
+    text-transform: uppercase;
+    letter-spacing: 0em;
+  }
+  .texste {
+    width: 100%;
+  }
+
+  .header-conteiner-imagem {
+    height: 1000px;
+    width: 100%;
+    background-image: url("../assets/fotoLoja.jpg");
+    background-position: top right;
+  }
+
+}

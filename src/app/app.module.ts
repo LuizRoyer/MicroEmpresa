@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes, Router } from '@angular/router';
+// tslint:disable-next-line:max-line-length
 import { MatToolbarModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatInputModule, MatOptionModule, MatIconModule, MatCardModule, MatDividerModule, MatSnackBarModule, MatTableModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -35,21 +36,21 @@ const routes: Routes = [
 
   { path: 'produtocreate', component: ProdutoCreateComponent },
   { path: 'produtoedit/:id', component: ProdutoEditComponent },
-  { path: 'produtolist', component: ProdutoListComponent },  
+  { path: 'produtolist', component: ProdutoListComponent },
 
   { path: 'clientecreate', component: ClienteCreateComponent },
   { path: 'clienteedit/:id', component: ClienteEditComponent },
-  { path: 'clientelist', component: ClienteListComponent },  
+  { path: 'clientelist', component: ClienteListComponent },
 
   { path: 'compracreate', component: CompraCreateComponent },
-  { path: 'compraedit/:id', component:CompraEditComponent },
-  { path: 'compralist', component: CompraListComponent },  
+  { path: 'compraedit/:id', component: CompraEditComponent },
+  { path: 'compralist', component: CompraListComponent },
 
   { path: 'vendacreate', component: VendaCreateComponent },
   { path: 'vendaedit/:id', component: VendaEditComponent },
-  { path: 'vendalist', component: VendaListComponent },  
- 
-  { path: 'menu', component: MenuComponent },  
+  { path: 'vendalist', component: VendaListComponent },
+
+  { path: 'menu', component: MenuComponent },
 
   { path: '', redirectTo: 'menu', pathMatch: 'full' }
 ];
@@ -70,8 +71,13 @@ const routes: Routes = [
     VendaCreateComponent,
     MenuComponent,
     CompraCreateComponent,
+<<<<<<< HEAD
     CompraEditComponent,
     CompraListComponent
+=======
+    CompraListComponent,
+    CompraEditComponent
+>>>>>>> e18df0fc10bc969785404b4c2bb4cac4fe772bcf
   ],
   imports: [
     BrowserModule,
@@ -89,11 +95,11 @@ const routes: Routes = [
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule,   
+    MatSnackBarModule,
     HttpModule,
     FormsModule
   ],
-  providers: [FornecedorService,EnderecoService],
+  providers: [FornecedorService, EnderecoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
