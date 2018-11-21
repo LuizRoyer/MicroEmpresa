@@ -31,6 +31,7 @@ export class ProdutoEditComponent implements OnInit {
       tamanho: '',
       unidade: '',
       tipo: '',
+      quantidade:'',
     });
   }
 
@@ -46,13 +47,13 @@ export class ProdutoEditComponent implements OnInit {
           this.updateForm.get('tamanho').setValue(this.iproduto.tamanho);
           this.updateForm.get('unidade').setValue(this.iproduto.unidade);
           this.updateForm.get('tipo').setValue(this.iproduto.tipo);
-
+          this.updateForm.get('quantidade').setValue(this.iproduto.quantidade);
         });
     });
   }
 
-  updateProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo) {
-    this.produtoService.updateProduto(this.id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo).subscribe(() => {
+  updateProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
+    this.produtoService.updateProduto(this.id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade).subscribe(() => {
       this.snackBar.open('Produto Atualizado com sucesso', 'Ok', {
         duration: 3000
       });

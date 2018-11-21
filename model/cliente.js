@@ -3,10 +3,7 @@ import mongoose from 'mongoose';
 const Cliente = mongoose.Schema;
 
 let cliente = new Cliente({
-
-    codigo: {
-        type: Number
-    },
+  
     nome: {
         type: String
     },

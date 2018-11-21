@@ -1,6 +1,5 @@
 export interface ICliente {
-
-    codigo: Number;
+    
     nome: String;
     CPF: String;
     dataNascimento: String;

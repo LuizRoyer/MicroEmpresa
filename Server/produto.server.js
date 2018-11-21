@@ -43,6 +43,7 @@ router.route('/Produto/update/:id').post((req, res) => {
             produto.tamanho = req.body.tamanho;
             produto.unidade = req.body.unidade;
             produto.tipo = req.body.tipo;
+            produto.quantidade = req.body.quantidade;
 
             produto.save().then(produto => {
                 res.json('Produto Atualizado');

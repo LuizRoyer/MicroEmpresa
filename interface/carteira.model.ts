@@ -4,7 +4,7 @@ export interface ICarteira {
     codigoFornecedor: Number;
     codigoProduto: Number;
     dataCompra: String;
-    status: Boolean;
+    status: String;
     quantidade: Number;
     valorProduto: Number;
 }

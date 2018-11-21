@@ -1,7 +1,7 @@
 import { IEndereco } from '../interface/endereco.model';
 
 export interface IEnderecoFornecedor {
-    id: String;
+   
     nome: String;
     nomeFantasia: String;
     status: String;

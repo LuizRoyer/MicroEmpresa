@@ -27,6 +27,9 @@ let produto = new Produto({
     },
     tipo: {
         type: String
+    },
+    quantidade: {
+        type: Number
     }
 });
 

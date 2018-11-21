@@ -39,3 +39,4 @@ testem.log
 Thumbs.db
 *.log
 package-lock.json
+package.json

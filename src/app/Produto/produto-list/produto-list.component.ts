@@ -12,7 +12,7 @@ import { IProduto} from 'interface/produto.model';
 export class ProdutoListComponent implements OnInit {
 
   iProdutos: IProduto[];
-  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'marca', 'tamanho', 'unidade', 'tipo', 'action'];
+  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'marca', 'tamanho', 'unidade', 'tipo','quantidade', 'action'];
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 

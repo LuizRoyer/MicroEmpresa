@@ -7,4 +7,5 @@ export interface IProduto {
     tamanho: String; 
     unidade: String; 
     tipo: String;
+    quantidade:Number;
 }

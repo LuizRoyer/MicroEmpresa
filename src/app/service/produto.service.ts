@@ -19,7 +19,7 @@ export class ProdutoService {
     return this.http.get(`${this.uri}/Produto/${id}`);
   }
 
-  addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo) {
+  addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
     const produto = {
       descricao: descricao,
       valorUnitario: valorUnitario,
@@ -28,11 +28,12 @@ export class ProdutoService {
       tamanho: tamanho,
       unidade: unidade,
       tipo: tipo,
+      quantidade:quantidade,
     };
     return this.http.post(`${this.uri}/Produto/add`, produto);
   }
 
-  updateProduto(id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo) {
+  updateProduto(id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
     const produto = {
       descricao: descricao,
       valorUnitario: valorUnitario,
@@ -41,6 +42,7 @@ export class ProdutoService {
       tamanho: tamanho,
       unidade: unidade,
       tipo: tipo,
+      quantidade:quantidade,
     };
     return this.http.post(`${this.uri}/Produto/update/${id}`, produto);
   }

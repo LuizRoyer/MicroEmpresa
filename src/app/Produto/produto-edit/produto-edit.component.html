@@ -58,12 +58,16 @@
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Quantidade" formControlName="quantidade" #quantidade>
+      </mat-form-field>
+
       <mat-divider></mat-divider>
       <br><br>
       <button mat-raised-button color="accent" routerLink="/produtolist">Voltar</button>
       <br>
       <button type="submit" (click)="updateProduto(descricao.value, valorUnitario.value, observacao.value,
-               marca.value, tamanho.value, unidade.value, tipo.value)"
+               marca.value, tamanho.value, unidade.value, tipo.value, quantidade.value)"
         [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary"> Salvar</button>
 
     </form>

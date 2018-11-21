@@ -24,7 +24,7 @@ router.route('/Cliente/:id').get((req, res) => {
 router.route('/Cliente/add').post((req, res) => {
     let cliente = new Cliente(req.body);
     cliente.save()
-        .then(produto => {
+        .then(cliente => {
             res.status(200).json({ 'cliente': ' Cliente adicionado com sucesso' });
         }).catch(err => {
             res.status(400).send('Erro ao adicionar um Cliente');
@@ -36,14 +36,13 @@ router.route('/Cliente/update/:id').post((req, res) => {
         if (!cliente)
             return next(new Error('Nao consegui abrir o arquivo'));
         else {
-            cliente.codigo = req.body.descricao;
-            cliente.nome = req.body.descricao;
-            cliente.CPF = req.body.descricao;
-            cliente.dataNascimento = req.body.descricao;
-            cliente.telefone = req.body.descricao;
-            cliente.celular = req.body.descricao;
-            cliente.email = req.body.descricao;
-            cliente.cep = req.body.descricao;
+            cliente.nome = req.body.nome;
+            cliente.CPF = req.body.CPF;
+            cliente.dataNascimento = req.body.dataNascimento;
+            cliente.telefone = req.body.telefone;
+            cliente.celular = req.body.celular;
+            cliente.email = req.body.email;
+            cliente.cep = req.body.cep;
 
             cliente.save().then(cliente => {
                 res.json('Cliente Atualizado');
