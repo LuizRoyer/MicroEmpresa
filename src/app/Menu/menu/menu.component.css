@@ -2,9 +2,17 @@ main {
   box-sizing: border-box;
 }
 
-.main-container-header,
-.main-container-footer {
+.main-container-header{
   text-align: center;
+}
+
+.main-container-footer {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.main-container-footer span {
+  margin-left: 76%;
 }
 
 .main-container-header h2 {

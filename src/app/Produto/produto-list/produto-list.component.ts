@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Router } from '@angular/router';
-import{MatTableDataSource}from  '@angular/material';
+import {MatTableDataSource} from '@angular/material';
 import { IProduto} from 'interface/produto.model';
 
 @Component({
@@ -12,7 +12,7 @@ import { IProduto} from 'interface/produto.model';
 export class ProdutoListComponent implements OnInit {
 
   iProdutos: IProduto[];
-  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'marca', 'tamanho', 'unidade', 'tipo','quantidade', 'action'];
+  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'quantidade', 'action'];
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
@@ -21,7 +21,7 @@ export class ProdutoListComponent implements OnInit {
   }
 
   buscarProduto() {
-    this.produtoService.getProduto().subscribe((data:IProduto[]) => {
+    this.produtoService.getProduto().subscribe((data: IProduto[]) => {
       this.iProdutos = data;
       console.log('Buscando Produtos');
       console.log(this.iProdutos);
