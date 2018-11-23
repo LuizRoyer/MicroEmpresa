@@ -31,7 +31,7 @@ export class ProdutoEditComponent implements OnInit {
       tamanho: '',
       unidade: '',
       tipo: '',
-      quantidade:'',
+      quantidade: '',
     });
   }
 
@@ -52,8 +52,10 @@ export class ProdutoEditComponent implements OnInit {
     });
   }
 
-  updateProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
-    this.produtoService.updateProduto(this.id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade).subscribe(() => {
+  updateProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo, quantidade) {
+    // tslint:disable-next-line:max-line-length
+    this.produtoService.updateProduto(this.id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo, quantidade).subscribe(() => {
+      this.router.navigate(['/produtolist']);
       this.snackBar.open('Produto Atualizado com sucesso', 'Ok', {
         duration: 3000
       });

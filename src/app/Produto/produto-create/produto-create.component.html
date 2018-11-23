@@ -26,14 +26,14 @@
 
       <mat-form-field class="field-full-width-combo">
         <mat-select placeholder="Tamanho" formControlName="tamanho" #tamanho>
-            <mat-option value="PP"> PP</mat-option>   
+            <mat-option value="PP"> PP</mat-option>
           <mat-option value="P"> P</mat-option>
           <mat-option value="M"> M</mat-option>
           <mat-option value="G"> G</mat-option>
           <mat-option value="GG"> GG</mat-option>
           <mat-option value="XG"> XG</mat-option>
           <mat-option value="XGG"> XGG</mat-option>
-          <mat-option value="XXG"> XXG</mat-option>              
+          <mat-option value="XXG"> XXG</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -63,12 +63,11 @@
       </mat-form-field>
 
       <mat-divider></mat-divider>
-      <br><br>
-      <button mat-raised-button color="accent" routerLink="/produtolist">Voltar</button>
-      <br><br>
+      <br>
+      <button mat-raised-button color="accent" routerLink="/produtolist" class="main-container-back">Voltar</button>
       <button type="submit" (click)="addProduto(descricao.value, valorUnitario.value, observacao.value,
        marca.value, tamanho.value, unidade.value, tipo.value, quantidade.value)"
-        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary"> Salvar</button>
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button class="main-container-next"> Salvar</button>
 
     </form>
   </mat-card>

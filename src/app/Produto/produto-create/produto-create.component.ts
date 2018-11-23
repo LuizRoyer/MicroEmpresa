@@ -21,12 +21,12 @@ export class ProdutoCreateComponent implements OnInit {
       tamanho: '',
       unidade: '',
       tipo: '',
-      quantidade:'',
+      quantidade: '',
     });
   }
 
-  addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
-    this.produtoService.addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade).subscribe(() => {
+  addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo, quantidade) {
+    this.produtoService.addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo, quantidade).subscribe(() => {
 
     });
 

@@ -16,13 +16,12 @@ import { IEndereco } from 'interface/endereco.model';
 })
 
 export class FornecedorListComponent implements OnInit {
-  
+
   iEnderecoFornecedores: IEnderecoFornecedor[];
 iFornecedores: IFornecedor[];
-iEnderecos :IEndereco[];
-  
-  displayedColumns = ['nome', 'nomeFantasia', 'CNPJ', 'atividade', 'telefone', 'celular', 'email', 'observacao', 'status',
-    'cep', 'logradouro', 'numero', 'complemento', 'bairro', 'localidade', 'uf', 'action'];
+iEnderecos: IEndereco[];
+
+  displayedColumns = ['nome', 'CNPJ', 'atividade', 'telefone', 'email', 'cep',  'action'];
 
 
   constructor(private forncedorService: FornecedorService, private enderecoService: EnderecoService, private router: Router) { }
@@ -37,18 +36,24 @@ iEnderecos :IEndereco[];
       console.log('Buscando Fornecedor');
       console.log(this.iEnderecoFornecedores);
 
+
      /* for (var i = 0; i < data.length; i++) {
+
+      // tslint:disable-next-line:no-var-keyword
+      for (var i = 0; i < data.length; i++) {
+
         this.enderecoService.getEnderecoById(this.iFornecedores[i].cep).subscribe((data1: IEndereco[]) => {
           this.iEnderecos = data1;
           console.log('Buscando Endereços');
           console.log(this.iEnderecos);
-
+*/           
         });
-      }*/           
-    });
-    
 
-  }
+      }
+
+   
+
+  
   editarFornecedor(id) {
     this.router.navigate([`/fornecedoredit/${id}`]);
   }

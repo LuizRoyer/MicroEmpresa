@@ -5,15 +5,15 @@
     <br><br>
     <mat-divider></mat-divider>
     <br>
-    <table mat-table [dataSource]="iProdutos">
+    <table mat-table [dataSource]="iProdutos" class="table-container-produto">
 
       <ng-container matColumnDef="descricao">
-        <th mat-header-cell *matHeaderCellDef>Descrição do Produto</th>
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
         <td mat-cell *matCellDef="let element">{{element.descricao}}</td>
       </ng-container>
 
       <ng-container matColumnDef="valorUnitario">
-        <th mat-header-cell *matHeaderCellDef>Valor Unitario</th>
+        <th mat-header-cell *matHeaderCellDef>Valor Uni.</th>
         <td mat-cell *matCellDef="let element">{{element.valorUnitario}}</td>
       </ng-container>
 
@@ -22,33 +22,13 @@
         <td mat-cell *matCellDef="let element">{{element.observacao}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="marca">
-        <th mat-header-cell *matHeaderCellDef>Marca</th>
-        <td mat-cell *matCellDef="let element">{{element.marca}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="tamanho">
-        <th mat-header-cell *matHeaderCellDef>Tamanho</th>
-        <td mat-cell *matCellDef="let element">{{element.tamanho}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="unidade">
-        <th mat-header-cell *matHeaderCellDef>Unidade</th>
-        <td mat-cell *matCellDef="let element">{{element.unidade}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="tipo">
-        <th mat-header-cell *matHeaderCellDef>Tipo</th>
-        <td mat-cell *matCellDef="let element">{{element.tipo}}</td>
-      </ng-container>
-
       <ng-container matColumnDef="quantidade">
         <th mat-header-cell *matHeaderCellDef>Quantidade</th>
         <td mat-cell *matCellDef="let element">{{element.quantidade}}</td>
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Acoes</th>
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Ações</th>
         <td mat-cell *matCellDef="let element" class="mat-column-right">
           <button mat-button color="primary" (click)="editarProduto(element._id)">Editar</button>
           <button mat-button color="warn" (click)="deleteProduto(element._id)">Excluir</button>
