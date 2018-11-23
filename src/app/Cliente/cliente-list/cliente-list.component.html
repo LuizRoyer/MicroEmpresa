@@ -1,3 +1,89 @@
-<p>
-  cliente-list works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" routerLink="/clientecreate">Adicionar Novo Cliente</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="iEnderecoClientes">
+    
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome do Cliente</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.nome}}</td>
+      </ng-container>
+     
+      <ng-container matColumnDef="CPF">
+        <th mat-header-cell *matHeaderCellDef>CPF do Cliente</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.CPF}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataNascimento">
+        <th mat-header-cell *matHeaderCellDef>Data de Nascimento</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.dataNascimento}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.telefone}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="celular">
+        <th mat-header-cell *matHeaderCellDef>Celular</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.celular}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element">{{element.cliente.email}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="cep">
+        <th mat-header-cell *matHeaderCellDef>Cep </th>
+        <td mat-cell *matCellDef="let element">{{element.cep.Cep}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="logradouro">
+        <th mat-header-cell *matHeaderCellDef>Endereço </th>
+        <td mat-cell *matCellDef="let element">{{element.cep.logradouro}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef>Numero</th>
+        <td mat-cell *matCellDef="let element">{{element.cep.numero}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="complemento">
+        <th mat-header-cell *matHeaderCellDef>Complemento</th>
+        <td mat-cell *matCellDef="let element">{{element.cep.complemento}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="bairro">
+        <th mat-header-cell *matHeaderCellDef>Bairro</th>
+        <td mat-cell *matCellDef="let element">{{element.cep.bairro}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="localidade">
+        <th mat-header-cell *matHeaderCellDef>Cidade</th>
+        <td mat-cell *matCellDef="let element">{{element.cep.localidade}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="uf">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let element">{{element.cep.uf}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Acoes</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-button color="primary" (click)="editarCliente(element._id)">Editar</button>
+          <button mat-button color="warn" (click)="deleteCliente(element._id ,element.cliente._cep, element.cliente._nome)">Excluir</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+
+</div>

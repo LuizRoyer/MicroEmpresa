@@ -1,5 +1,6 @@
 export interface IEndereco {
   
+    proprietario:String;
     cep: String;  
     logradouro: string; //Endereço 
     numero: String;

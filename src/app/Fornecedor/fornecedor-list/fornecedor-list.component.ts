@@ -37,14 +37,14 @@ iEnderecos :IEndereco[];
       console.log('Buscando Fornecedor');
       console.log(this.iEnderecoFornecedores);
 
-      for (var i = 0; i < data.length; i++) {
+     /* for (var i = 0; i < data.length; i++) {
         this.enderecoService.getEnderecoById(this.iFornecedores[i].cep).subscribe((data1: IEndereco[]) => {
           this.iEnderecos = data1;
           console.log('Buscando Endereços');
           console.log(this.iEnderecos);
 
         });
-      }           
+      }*/           
     });
     
 
@@ -54,11 +54,11 @@ iEnderecos :IEndereco[];
   }
 
   deleteFornecedor(id, cep) {
-    this.enderecoService.deleteEndereco(cep).subscribe(() => {
+   // this.enderecoService.deleteEndereco(cep).subscribe(() => {
       this.forncedorService.deleteFornecedor(id).subscribe(() => {
         this.buscarFornecedor();
       });
-    });
+   // });
   }
 
 }

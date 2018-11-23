@@ -4,6 +4,9 @@ const Endereco = mongoose.Schema;
 
 let endereco = new Endereco({
 
+    proprietario:{
+        type:String
+    },
     cep: {
         type: String
     },

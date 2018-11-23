@@ -1,6 +1,6 @@
 import { IEndereco } from '../interface/endereco.model';
 
-export interface IEnderecoFornecedor {
+export class IEnderecoFornecedor {
    
     nome: String;
     nomeFantasia: String;

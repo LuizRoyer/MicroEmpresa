@@ -3,7 +3,6 @@ import { FornecedorService } from 'src/app/service/fornecedor.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EnderecoService } from 'src/app/service/endereco.service';
-import { IFornecedor } from '../../../../interface/fornecedor.model';
 import { IEndereco } from 'interface/endereco.model';
 
 @Component({
@@ -41,9 +40,9 @@ export class FornecedorCreateComponent implements OnInit {
 
     this.fornecedorService.addFornecedor(nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao, cep).subscribe(() => {
     });
-    this.enderecoService.addEndereco(cep, logradouro, numero, complemento, bairro, localidade, uf).subscribe(() => {
+    //this.enderecoService.addEndereco(cep, logradouro, numero, complemento, bairro, localidade, uf).subscribe(() => {
 
-    });
+   // });
     
     this.router.navigate(['/fornecedorlist']);
   }

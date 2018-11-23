@@ -69,7 +69,7 @@ export class FornecedorEditComponent implements OnInit {
           this.idCep  =this.ifornecedor.cep;   
         });
     });
-         
+   /*      
     this.enderecoService.getEnderecoById(this.idCep).subscribe(res => {
       this.iendereco = res;
       this.updateForm.get('cep').setValue(this.iendereco.cep);
@@ -79,7 +79,7 @@ export class FornecedorEditComponent implements OnInit {
       this.updateForm.get('bairro').setValue(this.iendereco.bairro);
       this.updateForm.get('localidade').setValue(this.iendereco.localidade);
       this.updateForm.get('uf').setValue(this.iendereco.uf);
-    });
+    });*/
 
   }
 
@@ -93,12 +93,12 @@ export class FornecedorEditComponent implements OnInit {
         });
       });
 
-    this.enderecoService.updateEndereco(this.idCep, logradouro, numero, complemento, bairro, localidade, uf)
+   /* this.enderecoService.updateEndereco(this.idCep, logradouro, numero, complemento, bairro, localidade, uf)
       .subscribe(() => {
         this.snackBar.open('Endereco Atualizado com sucesso', 'Ok', {
           duration: 3000
         });
-      });
+      });*/
   }
 
   buscar(cep) {
