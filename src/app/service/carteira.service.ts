@@ -19,27 +19,27 @@ export class CarteiraService {
     return this.http.get(`${this.uri}/Carteira/${id}`);
   }
 
-  addCarteira(codigoCompra, codigoFornecedor, codigoProduto, dataCompra, status, quantidade, valorProduto) {
+  addCarteira(nomeFornecedor, Produto, dataCompra, status, qtdCompra, valorProduto) {
     const carteira = {
-      codigoCompra: codigoCompra,
-      codigoFornecedor: codigoFornecedor,
-      codigoProduto: codigoProduto,
+     
+      nomeFornecedor: nomeFornecedor,
+      Produto: Produto,
       dataCompra: dataCompra,
       status: status,
-      quantidade: quantidade,
+      qtdCompra: qtdCompra,
       valorProduto: valorProduto,
     };
     return this.http.post(`${this.uri}/Carteira/add`, carteira);
   }
 
-  updateCarteira(id, codigoCompra, codigoFornecedor, codigoProduto, dataCompra, status, quantidade, valorProduto) {
+  updateCarteira(id, nomeFornecedor, Produto, dataCompra, status, qtdCompra, valorProduto) {
     const carteira = {
-      codigoCompra: codigoCompra,
-      codigoFornecedor: codigoFornecedor,
-      codigoProduto: codigoProduto,
+      
+      nomeFornecedor: nomeFornecedor,
+      Produto: Produto,
       dataCompra: dataCompra,
       status: status,
-      quantidade: quantidade,
+      qtdCompra: qtdCompra,
       valorProduto: valorProduto,
     };
     return this.http.post(`${this.uri}/Carteira/update/${id}`, carteira);
@@ -48,6 +48,12 @@ export class CarteiraService {
   deleteCarteira(id) {
     return this.http.get(`${this.uri}/Carteira/delete/${id}`);
   }
+
+  deleteCarteiraProduto(id,nomeProduto) {
+    return this.http.get(`${this.uri}/Carteira/delete/${id}/${nomeProduto}`);
+  }
+
+
 
 }
 

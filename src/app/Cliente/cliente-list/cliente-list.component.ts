@@ -40,14 +40,16 @@ pCliente :Cliente[];
   buscarClientes() {
 
    
-      this.clienteService.getCliente().subscribe((data: Cliente[]) => {
+      this.clienteService.getCliente().subscribe((data: ICliente[]) => {
       this.pCliente = data;
+      this.iClientes= data;
       console.log('Buscando Clientes');
       console.log(this.iClientes);
 
       for (var i = 0; i < data.length; i++) {
-        this.enderecoService.getIdEndereco(this.pCliente[i].cep, this.pCliente[i].nome).subscribe((data1: Endereco[]) => {
+        this.enderecoService.getIdEndereco(this.pCliente[i].cep, this.pCliente[i].nome).subscribe((data1: IEndereco[]) => {
           this.pEndereco = data1;
+          this.iEnderecos = data1;
           console.log('Buscando Endereços');
           console.log(this.iEnderecos);
 
@@ -60,16 +62,18 @@ pCliente :Cliente[];
             // this.pCliente[i].email, this.pCliente[i].cep );
          
              this.clieteEndereco = new EnderecoCliente(this.pEndereco, this.pCliente);
-          this.iEnderecoClientes[i-1].cep = this.clieteEndereco.cep;
-          this.iEnderecoClientes[i-1].cliente = this.clieteEndereco.cliente;
-        });        
-       console.log(this.clieteEndereco);
-        
-         
-      }
-    
+
+        });       
+                   
+      }     
     });
     
+    for(var j=0 ; j<Endereco.length; j++){
+      this.iEnderecoClientes[j].clienteEndereco = this.clieteEndereco;
+     
+
+    }
+    console.log(this.iEnderecoClientes);
    
    
   }

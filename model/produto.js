@@ -30,7 +30,8 @@ let produto = new Produto({
     },
     quantidade: {
         type: Number
-    }
+    },
+   
 });
 
 export default mongoose.model('Produto', produto);

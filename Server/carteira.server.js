@@ -37,11 +37,11 @@ router.route('/Carteira/update/:id').post((req, res) => {
             return next(new Error('Nao consegui abrir o arquivo'));
         else {
             carteira.codigoCompra= req.body.codigoCompra;
-            carteira.codigoFornecedor= req.body.codigoFornecedor;
-            carteira.codigoProduto= req.body.codigoProduto;
+            carteira.nomeFornecedor= req.body.nomeFornecedor;
+            carteira.Produto= req.body.Produto;
             carteira.dataCompra = req.body.dataCompra;
             carteira.status= req.body.status;
-            carteira. quantidade= req.body.quantidade;
+            carteira. qtdCompra= req.body.qtdCompra;
             carteira.valorProduto= req.body.valorProduto;
 
             carteira.save().then(carteira => {
@@ -61,5 +61,19 @@ router.route('/Carteira/delete/:id').get((req, res) => {
             res.json('Deletado com sucesso');
     })
 })
+
+router.route('/Carteira/delete/:id/:produto').get((req, res) => {
+    Carteira.findByIdAndRemove({id:req.params.id, nomeProduto:req.params.nomeProduto}, (err, carteira) => {
+        if (err)
+            res.json(err);
+        else
+            res.json('Deletado com sucesso');
+    })
+})
+
+
+
+
+
 
 export default router;
