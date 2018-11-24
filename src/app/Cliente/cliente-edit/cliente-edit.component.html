@@ -56,16 +56,9 @@
         <input matInput placeholder="Localidade" formControlName="localidade" #localidade>
       </mat-form-field>
 
-      <mat-form-field class="field-full-width-combo">
-        <mat-select placeholder="Estado" formControlName="uf" #uf>
-          <mat-option value="SC"> SC</mat-option>
-          <mat-option value="PR"> PR</mat-option>
-          <mat-option value="RJ"> RJ</mat-option>
-          <mat-option value="SP"> SP</mat-option>
-          <mat-option value="RS"> RS</mat-option>
-          <mat-option value="DF"> DF</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Estado" formControlName="uf" #uf />
+        </mat-form-field>
 
       <mat-divider></mat-divider>
       <br><br>

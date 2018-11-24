@@ -1,7 +1,7 @@
-import { IEndereco } from "./endereco.model";
-import { ICliente } from "./cliente.model";
+import { IEndereco } from './endereco.model';
+import { ICliente } from './cliente.model';
 
 export interface IEnderecoCliente {
 
-   clienteEndereco:any;
+   clienteEndereco: any;
 }

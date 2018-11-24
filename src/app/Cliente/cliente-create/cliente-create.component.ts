@@ -11,12 +11,16 @@ import { IEndereco } from 'interface/endereco.model';
   styleUrls: ['./cliente-create.component.css']
 })
 export class ClienteCreateComponent implements OnInit {
-
-
   createForm: FormGroup;
   Endereco: any = {};
 
-  constructor(private clienteService: ClienteService, private enderecoService: EnderecoService, private fb: FormBuilder, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(
+    private clienteService: ClienteService,
+    private enderecoService: EnderecoService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.createForm = this.fb.group({
       nome: ['', Validators.required],
       CPF: '',
@@ -33,23 +37,46 @@ export class ClienteCreateComponent implements OnInit {
       uf: ''
     });
   }
-  addCliente(nome, CPF, dataNascimento, telefone, celular, email, cep,
-    logradouro, numero, complemento, bairro, localidade, uf) {
+  addCliente(
+    nome,
+    CPF,
+    dataNascimento,
+    telefone,
+    celular,
+    email,
+    cep,
+    logradouro,
+    numero,
+    complemento,
+    bairro,
+    localidade,
+    uf
+  ) {
+    this.enderecoService
+      .addEndereco(
+        nome,
+        cep,
+        logradouro,
+        numero,
+        complemento,
+        bairro,
+        localidade,
+        uf
+      )
+      .subscribe(() => {});
 
-    this.enderecoService.addEndereco(nome,cep, logradouro, numero, complemento, bairro, localidade, uf).subscribe(() => {
-    });
-
-    this.clienteService.addCliente(nome, CPF, dataNascimento, telefone, celular, email, cep).subscribe(() => {
-    });
-
+    this.clienteService
+      .addCliente(nome, CPF, dataNascimento, telefone, celular, email, cep)
+      .subscribe(() => {});
 
     this.router.navigate(['/clientelist']);
   }
 
   buscar(cep) {
-    this.enderecoService.buscar(cep)
-      .then((cep: IEndereco) => {
-        this.Endereco = cep
+    this.enderecoService
+      .buscar(cep)
+      .then((ceps: IEndereco) => {
+        this.Endereco = ceps;
 
         this.createForm.get('cep').setValue(this.Endereco.cep);
         this.createForm.get('logradouro').setValue(this.Endereco.logradouro);
@@ -59,14 +86,10 @@ export class ClienteCreateComponent implements OnInit {
         this.createForm.get('localidade').setValue(this.Endereco.localidade);
         this.createForm.get('uf').setValue(this.Endereco.uf);
       })
-      .catch((cep: IEndereco) => {
-        alert('Nao foi possivel buscar o Cep')
+      .catch((ceps: IEndereco) => {
+        alert('Nao foi possivel buscar o Cep');
       });
   }
 
-
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 }

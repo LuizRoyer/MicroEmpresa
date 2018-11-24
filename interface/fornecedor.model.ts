@@ -1,5 +1,5 @@
 export interface IFornecedor {
-   
+
     nome: String;
     nomeFantasia: String;
     status: String;
@@ -9,5 +9,5 @@ export interface IFornecedor {
     celular: String;
     email: String;
     observacao: String;
-    cep: String;  
+    cep: String;
   }

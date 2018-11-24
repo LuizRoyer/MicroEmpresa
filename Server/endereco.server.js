@@ -55,7 +55,7 @@ router.route('/Endereco/update/:cep/:proprietario').post((req, res) => {
     });
 });
 
-router.route('/Endereco/delete/:id/:proprietario').get((req, res) => {
+router.route('/Endereco/delete/:cep/:proprietario').get((req, res) => {
     Endereco.findByIdAndRemove({cep:req.params.cep, proprietario:req.params.proprietario}, (err, endereco) => {
         if (err)
             res.json(err);

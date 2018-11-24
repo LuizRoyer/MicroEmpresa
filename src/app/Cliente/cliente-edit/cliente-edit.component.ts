@@ -12,7 +12,6 @@ import { IEndereco } from 'interface/endereco.model';
   styleUrls: ['./cliente-edit.component.css']
 })
 export class ClienteEditComponent implements OnInit {
-
   id: String;
   idCep: String;
   iCliente: any = {};
@@ -20,12 +19,15 @@ export class ClienteEditComponent implements OnInit {
   Endereco: any = {};
   updateForm: FormGroup;
 
-  constructor(private clienteService: ClienteService, private enderecoService: EnderecoService,
-    private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar,
-    private fb: FormBuilder) {
-
+  constructor(
+    private clienteService: ClienteService,
+    private enderecoService: EnderecoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {
     this.createForm();
-
   }
 
   createForm() {
@@ -47,60 +49,94 @@ export class ClienteEditComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
-      this.id = params.id,
-
+      (this.id = params.id),
         this.clienteService.getClienteById(this.id).subscribe(res => {
           this.iCliente = res;
           this.updateForm.get('nome').setValue(this.iCliente.nome);
-          this.updateForm.get('CNPJ').setValue(this.iCliente.CPF);
-          this.updateForm.get('atividade').setValue(this.iCliente.dataNascimento);
+          this.updateForm.get('CPF').setValue(this.iCliente.CPF);
+          this.updateForm
+            .get('dataNascimento')
+            .setValue(this.iCliente.dataNascimento);
           this.updateForm.get('telefone').setValue(this.iCliente.telefone);
           this.updateForm.get('celular').setValue(this.iCliente.celular);
           this.updateForm.get('email').setValue(this.iCliente.email);
           this.updateForm.get('cep').setValue(this.iCliente.cep);
           this.idCep = this.iCliente.cep;
+          this.enderecoService
+            .getIdEndereco(this.iCliente.cep, this.iCliente.nome)
+            .subscribe(ress => {
+              this.iendereco = ress;
+              this.updateForm
+                .get('logradouro')
+                .setValue(this.iendereco.logradouro);
+              this.updateForm.get('numero').setValue(this.iendereco.numero);
+              this.updateForm
+                .get('complemento')
+                .setValue(this.iendereco.complemento);
+              this.updateForm.get('bairro').setValue(this.iendereco.bairro);
+              this.updateForm
+                .get('localidade')
+                .setValue(this.iendereco.localidade);
+              this.updateForm.get('uf').setValue(this.iendereco.uf);
+            });
         });
     });
-
-    this.enderecoService.getIdEndereco(this.idCep,this.iCliente.nome ).subscribe(res => {
-      this.iendereco = res;
-      this.updateForm.get('cep').setValue(this.iendereco.cep);
-      this.updateForm.get('logradouro').setValue(this.iendereco.logradouro);
-      this.updateForm.get('numero').setValue(this.iendereco.numero);
-      this.updateForm.get('complemento').setValue(this.iendereco.complemento);
-      this.updateForm.get('bairro').setValue(this.iendereco.bairro);
-      this.updateForm.get('localidade').setValue(this.iendereco.localidade);
-      this.updateForm.get('uf').setValue(this.iendereco.uf);
-    });
-
   }
 
+  updateCliente(
+    nome,
+    CPF,
+    dataNascimento,
+    telefone,
+    celular,
+    email,
+    cep,
+    logradouro,
+    numero,
+    complemento,
+    bairro,
+    localidade,
+    uf
+  ) {
+    this.clienteService
+      .updateCliente(
+        this.id,
+        nome,
+        CPF,
+        dataNascimento,
+        telefone,
+        celular,
+        email,
+        cep
+      )
+      .subscribe(() => {});
 
-  updateCliente(nome, CPF, dataNascimento, telefone, celular, email, cep,
-    logradouro, numero, complemento, bairro, localidade, uf) {
-
-    this.clienteService.updateCliente(this.id, nome, CPF, dataNascimento, telefone, celular, email, cep).subscribe(() => {
-      this.snackBar.open('Cliente Atualizado com sucesso', 'Ok', {
-        duration: 3000
-      });
-    });
-
-    this.enderecoService.deleteEndereco(cep, nome).subscribe(() => {
-    });
-    this.enderecoService.addEndereco(nome, cep, logradouro, numero, complemento, bairro, localidade, uf)
+    this.enderecoService
+      .updateEndereco(
+        nome,
+        this.idCep,
+        cep,
+        logradouro,
+        numero,
+        complemento,
+        bairro,
+        localidade,
+        uf
+      )
       .subscribe(() => {
-        this.snackBar.open('Endereco Atualizado com sucesso', 'Ok', {
+        this.router.navigate(['/clientelist']);
+        this.snackBar.open('Cliente Atualizado com sucesso', 'Ok', {
           duration: 3000
         });
       });
   }
 
   buscar(cep) {
-    this.enderecoService.buscar(cep)
-      .then((cep: IEndereco) => {
-        this.Endereco = cep
+    this.enderecoService
+      .buscar(cep)
+      .then((ceps: IEndereco) => {
+        this.Endereco = ceps;
 
         this.updateForm.get('cep').setValue(this.Endereco.cep);
         this.updateForm.get('logradouro').setValue(this.Endereco.logradouro);
@@ -110,10 +146,8 @@ export class ClienteEditComponent implements OnInit {
         this.updateForm.get('localidade').setValue(this.Endereco.localidade);
         this.updateForm.get('uf').setValue(this.Endereco.uf);
       })
-      .catch((cep: IEndereco) => {
-        alert('Nao foi possivel buscar o Cep')
+      .catch((ceps: IEndereco) => {
+        alert('Nao foi possivel buscar o Cep');
       });
   }
-
-
 }

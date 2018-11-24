@@ -14,17 +14,26 @@ import { IEndereco } from 'interface/endereco.model';
   templateUrl: './fornecedor-list.component.html',
   styleUrls: ['./fornecedor-list.component.css']
 })
-
 export class FornecedorListComponent implements OnInit {
-
   iEnderecoFornecedores: IEnderecoFornecedor[];
-iFornecedores: IFornecedor[];
-iEnderecos: IEndereco[];
+  iFornecedores: IFornecedor[];
+  iEnderecos: IEndereco[];
 
-  displayedColumns = ['nome', 'CNPJ', 'atividade', 'telefone', 'email', 'cep',  'action'];
+  displayedColumns = [
+    'nome',
+    'CNPJ',
+    'atividade',
+    'telefone',
+    'email',
+    'cep',
+    'action'
+  ];
 
-
-  constructor(private forncedorService: FornecedorService, private enderecoService: EnderecoService, private router: Router) { }
+  constructor(
+    private forncedorService: FornecedorService,
+    private enderecoService: EnderecoService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.buscarFornecedor();
@@ -33,37 +42,16 @@ iEnderecos: IEndereco[];
   buscarFornecedor() {
     this.forncedorService.getFornecedor().subscribe((data: IFornecedor[]) => {
       this.iFornecedores = data;
-      console.log('Buscando Fornecedor');
-      console.log(this.iEnderecoFornecedores);
+    });
+  }
 
-
-     /* for (var i = 0; i < data.length; i++) {
-
-      // tslint:disable-next-line:no-var-keyword
-      for (var i = 0; i < data.length; i++) {
-
-        this.enderecoService.getEnderecoById(this.iFornecedores[i].cep).subscribe((data1: IEndereco[]) => {
-          this.iEnderecos = data1;
-          console.log('Buscando Endereços');
-          console.log(this.iEnderecos);
-*/           
-        });
-
-      }
-
-   
-
-  
   editarFornecedor(id) {
     this.router.navigate([`/fornecedoredit/${id}`]);
   }
 
-  deleteFornecedor(id, cep) {
-   // this.enderecoService.deleteEndereco(cep).subscribe(() => {
-      this.forncedorService.deleteFornecedor(id).subscribe(() => {
-        this.buscarFornecedor();
-      });
-   // });
+  deleteFornecedor(id) {
+    this.forncedorService.deleteFornecedor(id).subscribe(() => {
+      this.buscarFornecedor();
+    });
   }
-
 }

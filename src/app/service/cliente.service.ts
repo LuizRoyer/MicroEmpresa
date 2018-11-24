@@ -11,8 +11,7 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   getCliente() {
-    return this.http.get(`${this.uri}/Cliente`);
-    this.http
+    return this.http.get(`${this.uri}/cliente`);
   }
 
   getClienteById(id) {
