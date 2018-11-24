@@ -11,7 +11,7 @@ router.route('/Endereco').get((req, res) => {
             res.json(endereco);
     });
 });
- 
+
 router.route('/Endereco/:cep/:proprietario').get((req, res) => {
     Endereco.findOne({cep:req.params.cep, proprietario:req.params.proprietario}, (err, endereco) => {
         if (err)
@@ -32,13 +32,13 @@ router.route('/Endereco/add').post((req, res) => {
         });
 });
 
-router.route('/Endereco/update/:id/:proprietario').post((req, res) => {
+router.route('/Endereco/update/:cep/:proprietario').post((req, res) => {
     Endereco.findOne({cep:req.params.cep, proprietario:req.params.proprietario}, (err, endereco) => {
         if (!endereco)
             return next(new Error('Nao consegui abrir o arquivo'));
-        else {  
-            endereco.proprietario = req.body.proprietario;         
-            endereco.cep = req.body.cep;           
+        else {
+            endereco.proprietario = req.body.proprietario;
+            endereco.cep = req.body.cep;
             endereco.logradouro = req.body.logradouro;
             endereco.numero = req.body.numero;
             endereco.complemento = req.body.complemento;

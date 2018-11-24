@@ -19,35 +19,34 @@ export class EnderecoService {
     return this.http.get(`${this.uri}/Endereco/${cep}/${proprietario}`);
   }
 
-
-
   addEndereco(proprietario, cep, logradouro, numero, complemento, bairro, localidade, uf) {
     const endereco = {
       proprietario: proprietario,
       cep: cep,
-      logradouro: logradouro, //Endereço 
+      logradouro: logradouro, //Endereço
       numero: numero,
       complemento: complemento,
       bairro: bairro,
       localidade: localidade, //cidade
-      uf: uf, // Estado   
+      uf: uf, // Estado
     };
     return this.http.post(`${this.uri}/Endereco/add`, endereco);
   }
 
-  updateEndereco(proprietario, cep, logradouro, numero, complemento, bairro, localidade, uf) {
+  updateEndereco(proprietario, idcep, cep, logradouro, numero, complemento, bairro, localidade, uf) {
     const endereco = {
       proprietario: proprietario,
       cep: cep,
-      logradouro: logradouro, //Endereço 
+      logradouro: logradouro, //Endereço
       numero: numero,
       complemento: complemento,
       bairro: bairro,
       localidade: localidade, //cidade
-      uf: uf // Estado   
+      uf: uf // Estado
 
     };
-    return this.http.post(`${this.uri}/Endereco/update/${cep}/${proprietario}`, endereco);
+    console.log(cep + proprietario);
+    return this.http.post(`${this.uri}/Endereco/update/${idcep}/${proprietario}`, endereco);
   }
 
   deleteEndereco(cep, proprietario) {

@@ -65,7 +65,6 @@ nav {
 
 .footer-container {
   background-color: #000;
-  height: 150px;
   text-align: center;
   color: #fff;
   font-size: 10px;
@@ -90,6 +89,13 @@ nav {
 }
 
 .footer-container p {
+  display: block;
+  width: 300px;
+  height: 50px;
+  font-size: 30px;
+}
+
+.footer-container h3 {
   display: block;
   margin: 0;
 }
@@ -120,9 +126,10 @@ nav {
   }
 
   .header-conteiner-imagem {
-    height: 500px;
+    height: 300px;
+    max-height: 100%;
     width: 100%;
-    background-image: url("../assets/fotoLoja.jpg");
+    background-image: url("../assets/index.jfif") no-repeat;
     background-position: top right;
   }
 }
@@ -151,10 +158,9 @@ nav {
   }
 
   .header-conteiner-imagem {
-    height: 1000px;
+    height: 495px;
     width: 100%;
-    background-image: url("../assets/fotoLoja.jpg");
+    background-image: url("../assets/index.jfif");
     background-position: top right;
   }
-
 }

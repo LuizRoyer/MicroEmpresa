@@ -12,7 +12,6 @@ export class FornecedorService {
 
   getFornecedor() {
     return this.http.get(`${this.uri}/Fornecedor`);
-    this.http
   }
 
   getFornecedorById(id) {
@@ -20,22 +19,6 @@ export class FornecedorService {
   }
 
   addFornecedor(nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao,cep) {
-    const fornecedor = {
-      nome: nome,
-      nomeFantasia: nomeFantasia,  
-      status: status,    
-      CNPJ: CNPJ,
-      atividade: atividade,
-      telefone: telefone,
-      celular: celular,
-      email: email,
-      observacao: observacao,  
-      cep:cep,  
-    };
-    return this.http.post(`${this.uri}/Fornecedor/add`, fornecedor);
-  }
-
-  updateFornecedor(id, nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao,cep) {
     const fornecedor = {
       nome: nome,
       nomeFantasia: nomeFantasia,
@@ -46,7 +29,23 @@ export class FornecedorService {
       celular: celular,
       email: email,
       observacao: observacao,
-      cep:cep,
+      cep: cep,
+    };
+    return this.http.post(`${this.uri}/Fornecedor/add`, fornecedor);
+  }
+
+  updateFornecedor(id, nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao, cep) {
+    const fornecedor = {
+      nome: nome,
+      nomeFantasia: nomeFantasia,
+      status: status,
+      CNPJ: CNPJ,
+      atividade: atividade,
+      telefone: telefone,
+      celular: celular,
+      email: email,
+      observacao: observacao,
+      cep: cep,
     };
     return this.http.post(`${this.uri}/Fornecedor/update/${id}`, fornecedor);
   }
@@ -54,5 +53,5 @@ export class FornecedorService {
   deleteFornecedor(id) {
     return this.http.get(`${this.uri}/Fornecedor/delete/${id}`);
   }
-  
+
 }

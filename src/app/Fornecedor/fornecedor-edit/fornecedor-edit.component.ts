@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IEndereco } from 'interface/endereco.model';
 import { MatSnackBar } from '@angular/material';
-import { EnderecoService } from 'src/app/service/endereco.service';
+import { EnderecoService } from '../../service/endereco.service';
 
 @Component({
   selector: 'app-fornecedor-edit',
@@ -12,7 +12,6 @@ import { EnderecoService } from 'src/app/service/endereco.service';
   styleUrls: ['./fornecedor-edit.component.css']
 })
 export class FornecedorEditComponent implements OnInit {
-
   id: String;
   idCep: String;
   ifornecedor: any = {};
@@ -20,12 +19,15 @@ export class FornecedorEditComponent implements OnInit {
   Endereco: any = {};
   updateForm: FormGroup;
 
-  constructor(private fornecedorService: FornecedorService, private enderecoService: EnderecoService,
-    private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar,
-    private fb: FormBuilder) {
-
+  constructor(
+    private fornecedorService: FornecedorService,
+    private enderecoService: EnderecoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {
     this.createForm();
-
   }
 
   createForm() {
@@ -50,61 +52,107 @@ export class FornecedorEditComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
-      this.id = params.id,
-   
+      (this.id = params.id),
         this.fornecedorService.getFornecedorById(this.id).subscribe(res => {
           this.ifornecedor = res;
           this.updateForm.get('nome').setValue(this.ifornecedor.nome);
-          this.updateForm.get('nomeFantasia').setValue(this.ifornecedor.nomeFantasia);
+          this.updateForm
+            .get('nomeFantasia')
+            .setValue(this.ifornecedor.nomeFantasia);
           this.updateForm.get('status').setValue(this.ifornecedor.status);
           this.updateForm.get('CNPJ').setValue(this.ifornecedor.CNPJ);
           this.updateForm.get('atividade').setValue(this.ifornecedor.atividade);
           this.updateForm.get('telefone').setValue(this.ifornecedor.telefone);
           this.updateForm.get('celular').setValue(this.ifornecedor.celular);
           this.updateForm.get('email').setValue(this.ifornecedor.email);
-          this.updateForm.get('observacao').setValue(this.ifornecedor.observacao);
-          this.updateForm.get('cep').setValue(this.ifornecedor.cep);  
-          this.idCep  =this.ifornecedor.cep;   
+          this.updateForm
+            .get('observacao')
+            .setValue(this.ifornecedor.observacao);
+          this.updateForm.get('cep').setValue(this.ifornecedor.cep);
+          this.idCep = this.ifornecedor.cep;
+
+          this.enderecoService
+            .getIdEndereco(this.ifornecedor.cep, this.ifornecedor.nome)
+            .subscribe(ress => {
+              this.iendereco = ress;
+              this.updateForm.get('cep').setValue(this.iendereco.cep);
+              this.updateForm
+                .get('logradouro')
+                .setValue(this.iendereco.logradouro);
+              this.updateForm.get('numero').setValue(this.iendereco.numero);
+              this.updateForm
+                .get('complemento')
+                .setValue(this.iendereco.complemento);
+              this.updateForm.get('bairro').setValue(this.iendereco.bairro);
+              this.updateForm
+                .get('localidade')
+                .setValue(this.iendereco.localidade);
+              this.updateForm.get('uf').setValue(this.iendereco.uf);
+            });
         });
     });
-   /*      
-    this.enderecoService.getEnderecoById(this.idCep).subscribe(res => {
-      this.iendereco = res;
-      this.updateForm.get('cep').setValue(this.iendereco.cep);
-      this.updateForm.get('logradouro').setValue(this.iendereco.logradouro);
-      this.updateForm.get('numero').setValue(this.iendereco.numero);
-      this.updateForm.get('complemento').setValue(this.iendereco.complemento);
-      this.updateForm.get('bairro').setValue(this.iendereco.bairro);
-      this.updateForm.get('localidade').setValue(this.iendereco.localidade);
-      this.updateForm.get('uf').setValue(this.iendereco.uf);
-    });*/
-
   }
 
-  updateFornecedor(nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao, cep,
-    logradouro, numero, complemento, bairro, localidade, uf) {
+  updateFornecedor(
+    nome,
+    nomeFantasia,
+    status,
+    CNPJ,
+    atividade,
+    telefone,
+    celular,
+    email,
+    observacao,
+    cep,
+    logradouro,
+    numero,
+    complemento,
+    bairro,
+    localidade,
+    uf
+  ) {
+    this.fornecedorService
+      .updateFornecedor(
+        this.id,
+        nome,
+        nomeFantasia,
+        status,
+        CNPJ,
+        atividade,
+        telefone,
+        celular,
+        email,
+        observacao,
+        cep
+      )
+      .subscribe(() => {});
 
-    this.fornecedorService.updateFornecedor(this.id, nome, nomeFantasia, status, CNPJ, atividade, telefone,
-      celular, email, observacao, cep).subscribe(() => {
+    this.enderecoService
+      .updateEndereco(
+        nome,
+        this.idCep,
+        cep,
+        logradouro,
+        numero,
+        complemento,
+        bairro,
+        localidade,
+        uf
+      )
+      .subscribe(() => {
+        this.router.navigate(['/fornecedorlist']);
         this.snackBar.open('Fornecedor Atualizado com sucesso', 'Ok', {
           duration: 3000
         });
       });
-
-   /* this.enderecoService.updateEndereco(this.idCep, logradouro, numero, complemento, bairro, localidade, uf)
-      .subscribe(() => {
-        this.snackBar.open('Endereco Atualizado com sucesso', 'Ok', {
-          duration: 3000
-        });
-      });*/
   }
 
   buscar(cep) {
-    this.enderecoService.buscar(cep)
-      .then((cep: IEndereco) => {
-        this.Endereco = cep
+    this.enderecoService
+      .buscar(cep)
+      .then((ceps: IEndereco) => {
+        this.Endereco = ceps;
 
         this.updateForm.get('cep').setValue(this.Endereco.cep);
         this.updateForm.get('logradouro').setValue(this.Endereco.logradouro);
@@ -114,10 +162,8 @@ export class FornecedorEditComponent implements OnInit {
         this.updateForm.get('localidade').setValue(this.Endereco.localidade);
         this.updateForm.get('uf').setValue(this.Endereco.uf);
       })
-      .catch((cep: IEndereco) => {
-        alert('Nao foi possivel buscar o Cep')
+      .catch((ceps: IEndereco) => {
+        alert('Nao foi possivel buscar o Cep');
       });
   }
-
-
 }
