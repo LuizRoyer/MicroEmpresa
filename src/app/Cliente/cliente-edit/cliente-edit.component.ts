@@ -77,6 +77,7 @@ export class ClienteEditComponent implements OnInit {
 
   }
 
+
   updateCliente(nome, CPF, dataNascimento, telefone, celular, email, cep,
     logradouro, numero, complemento, bairro, localidade, uf) {
 
@@ -86,7 +87,9 @@ export class ClienteEditComponent implements OnInit {
       });
     });
 
-    this.enderecoService.updateEndereco(nome, cep, logradouro, numero, complemento, bairro, localidade, uf)
+    this.enderecoService.deleteEndereco(cep, nome).subscribe(() => {
+    });
+    this.enderecoService.addEndereco(nome, cep, logradouro, numero, complemento, bairro, localidade, uf)
       .subscribe(() => {
         this.snackBar.open('Endereco Atualizado com sucesso', 'Ok', {
           duration: 3000

@@ -3,6 +3,5 @@ import { ICliente } from "./cliente.model";
 
 export interface IEnderecoCliente {
 
-    cep:IEndereco;
-    cliente:ICliente;
+   clienteEndereco:any;
 }
