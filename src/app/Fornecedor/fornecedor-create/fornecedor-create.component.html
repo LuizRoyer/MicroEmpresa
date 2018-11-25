@@ -72,7 +72,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="field-full-width-combo">
+      <mat-form-field class="field-full-width">
         <mat-select placeholder="Status" formControlName="status" #status>
           <mat-option value="Ativo"> Ativo</mat-option>
           <mat-option value="Inativo"> Inativo</mat-option>
@@ -120,13 +120,18 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="field-full-width-combo">
+      <mat-form-field class="field-full-width">
         <input matInput placeholder="Estado" formControlName="uf" #uf />
       </mat-form-field>
 
       <mat-divider></mat-divider>
-      <br /><br />
-      <button mat-raised-button color="accent" routerLink="/fornecedorlist">
+      <br />
+      <button
+        mat-raised-button
+        color="accent"
+        routerLink="/fornecedorlist"
+        class="main-container-back"
+      >
         Voltar
       </button>
 
@@ -155,6 +160,7 @@
         [disabled]="createForm.pristine || createForm.invalid"
         mat-raised-button
         color="primary"
+        class="main-container-next"
       >
         Salvar
       </button>

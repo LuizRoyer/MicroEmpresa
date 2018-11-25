@@ -1,75 +1,141 @@
 <div>
-  <br>
+  <br />
   <mat-card>
-    <section class="mat-typography">
-      <h3>Atualizar Cliente</h3>
-    </section>
+    <section class="mat-typography"><h3>Atualizar Cliente</h3></section>
     <mat-divider></mat-divider>
-    <br><br>
+    <br /><br />
     <form [formGroup]="updateForm" class="edit-form">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Nome do Cliente" formControlName="nome" #nome>
+        <input
+          matInput
+          placeholder="Nome do Cliente"
+          formControlName="nome"
+          #nome
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="CPF do Cliente" formControlName="CPF" #CPF>
+        <input
+          matInput
+          placeholder="CPF do Cliente"
+          formControlName="CPF"
+          #CPF
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Data de Nascimento" formControlName="dataNascimento" #dataNascimento>
+        <input
+          matInput
+          placeholder="Data de Nascimento"
+          formControlName="dataNascimento"
+          #dataNascimento
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Telefone Residencial" formControlName="telefone" #telefone>
+        <input
+          matInput
+          placeholder="Telefone Residencial"
+          formControlName="telefone"
+          #telefone
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Celular" formControlName="celular" #celular>
+        <input
+          matInput
+          placeholder="Celular"
+          formControlName="celular"
+          #celular
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="E-mail" formControlName="email" #email>
+        <input matInput placeholder="E-mail" formControlName="email" #email />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Cep" formControlName="cep" #cep>
-        <button mat-button color="primary" (click)="buscar(cep.value)">Procurar Cep</button>
+        <input matInput placeholder="Cep" formControlName="cep" #cep />
+        <button mat-button color="primary" (click)="buscar(cep.value)">
+          Procurar Cep
+        </button>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Endereço" formControlName="logradouro" #logradouro>
+        <input
+          matInput
+          placeholder="Endereço"
+          formControlName="logradouro"
+          #logradouro
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Numero" formControlName="numero" #numero>
+        <input matInput placeholder="Numero" formControlName="numero" #numero />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Complemento" formControlName="complemento" #complemento>
+        <input
+          matInput
+          placeholder="Complemento"
+          formControlName="complemento"
+          #complemento
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Bairro" formControlName="bairro" #bairro>
+        <input matInput placeholder="Bairro" formControlName="bairro" #bairro />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Localidade" formControlName="localidade" #localidade>
+        <input
+          matInput
+          placeholder="Localidade"
+          formControlName="localidade"
+          #localidade
+        />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-          <input matInput placeholder="Estado" formControlName="uf" #uf />
-        </mat-form-field>
+        <input matInput placeholder="Estado" formControlName="uf" #uf />
+      </mat-form-field>
 
       <mat-divider></mat-divider>
-      <br><br>
-      <button mat-raised-button color="accent" routerLink="/clientelist">Voltar</button>
-      <button type="submit" (click)="updateCliente(nome.value, CPF.value , dataNascimento.value ,
-         telefone.value, celular.value, email.value, cep.value,
-        logradouro.value, numero.value, complemento.value, bairro.value, localidade.value, uf.value)"
-        [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary"> Salvar</button>
-
-
+      <br />
+      <button
+        mat-raised-button
+        color="accent"
+        routerLink="/clientelist"
+        class="main-container-back"
+      >
+        Voltar
+      </button>
+      <button
+        type="submit"
+        (click)="
+          updateCliente(
+            nome.value,
+            CPF.value,
+            dataNascimento.value,
+            telefone.value,
+            celular.value,
+            email.value,
+            cep.value,
+            logradouro.value,
+            numero.value,
+            complemento.value,
+            bairro.value,
+            localidade.value,
+            uf.value
+          )
+        "
+        [disabled]="updateForm.pristine || updateForm.invalid"
+        mat-raised-button
+        color="primary"
+        class="main-container-next"
+      >
+        Salvar
+      </button>
     </form>
   </mat-card>
-
 </div>

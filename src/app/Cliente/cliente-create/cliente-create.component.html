@@ -1,83 +1,142 @@
 <div>
-    <br>
-    <mat-card>
-      <section class="mat-typography">
-        <h3>Novo Cliente</h3>
-      </section>
+  <br />
+  <mat-card>
+    <section class="mat-typography"><h3>Novo Cliente</h3></section>
+    <mat-divider></mat-divider>
+    <br /><br />
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Nome do Cliente"
+          formControlName="nome"
+          #nome
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="CPF do Cliente"
+          formControlName="CPF"
+          #CPF
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Data de  Nascimento"
+          formControlName="dataNascimento"
+          #dataNascimento
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Telefone Residencial"
+          formControlName="telefone"
+          #telefone
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Celular"
+          formControlName="celular"
+          #celular
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="E-mail" formControlName="email" #email />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Cep" formControlName="cep" #cep />
+        <button mat-button color="primary" (click)="buscar(cep.value)">
+          Procurar Cep
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Endereço"
+          formControlName="logradouro"
+          #logradouro
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Numero" formControlName="numero" #numero />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Complemento"
+          formControlName="complemento"
+          #complemento
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Bairro" formControlName="bairro" #bairro />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Cidade"
+          formControlName="localidade"
+          #localidade
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Estado" formControlName="uf" #uf />
+      </mat-form-field>
+
       <mat-divider></mat-divider>
-      <br><br>
-      <form [formGroup]="createForm" class="create-form">
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Nome do Cliente" formControlName="nome" #nome>
-        </mat-form-field>
+      <br />
+      <button
+        mat-raised-button
+        color="accent"
+        routerLink="/clientelist"
+        class="main-container-back"
+      >
+        Voltar
+      </button>
 
-       <mat-form-field class="field-full-width">
-          <input matInput placeholder="CPF do Cliente" formControlName="CPF" #CPF>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Data de  Nascimento" formControlName="dataNascimento" #dataNascimento>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Telefone Residencial" formControlName="telefone" #telefone>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Celular" formControlName="celular" #celular>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="E-mail" formControlName="email" #email>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Cep" formControlName="cep" #cep>
-          <button mat-button color="primary" (click)="buscar(cep.value)">Procurar Cep</button>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Endereço" formControlName="logradouro" #logradouro>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Numero" formControlName="numero" #numero>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Complemento" formControlName="complemento" #complemento>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Bairro" formControlName="bairro" #bairro>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Cidade" formControlName="localidade" #localidade>
-        </mat-form-field>
-
-        <mat-form-field class="field-full-width-combo">
-          <mat-select placeholder="Estado" formControlName="uf" #uf>
-            <mat-option value="SC"> SC</mat-option>
-            <mat-option value="PR"> PR</mat-option>
-            <mat-option value="RJ"> RJ</mat-option>
-            <mat-option value="SP"> SP</mat-option>
-            <mat-option value="RS"> RS</mat-option>
-            <mat-option value="DF"> DF</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-
-        <mat-divider></mat-divider>
-        <br><br>
-        <button mat-raised-button color="accent" routerLink="/clientelist">Voltar</button>
-
-        <button type="submit" (click)="addCliente(nome.value, CPF.value ,dataNascimento.value,
-        telefone.value, celular.value, email.value,  cep.value,
-        logradouro.value, numero.value, complemento.value, bairro.value, localidade.value, uf.value)"
-          [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary"> Salvar</button>
-
-      </form>
-    </mat-card>
-
-  </div>
+      <button
+        type="submit"
+        (click)="
+          addCliente(
+            nome.value,
+            CPF.value,
+            dataNascimento.value,
+            telefone.value,
+            celular.value,
+            email.value,
+            cep.value,
+            logradouro.value,
+            numero.value,
+            complemento.value,
+            bairro.value,
+            localidade.value,
+            uf.value
+          )
+        "
+        [disabled]="createForm.pristine || createForm.invalid"
+        mat-raised-button
+        color="primary"
+        class="main-container-next"
+      >
+        Salvar
+      </button>
+    </form>
+  </mat-card>
+</div>

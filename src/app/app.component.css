@@ -8,14 +8,12 @@ nav {
   margin: 0 auto;
   display: block;
   text-align: center;
-  /*box-shadow: 30px 0 10px -20px black;*/
-  text-shadow: 2px 5px #fff;
+  text-shadow: 2px 5px #ccc;
 }
 
 .header-conteiner-imagem {
   height: 0px;
   width: 0px;
-  background: yellow;
 }
 
 .menuPrincipal {
@@ -25,7 +23,7 @@ nav {
   color: #fff;
 }
 
-.menuPrincipal dt a {
+.menuPrincipal dt {
   text-transform: uppercase;
   letter-spacing: 0.3em;
 }
@@ -42,7 +40,7 @@ nav {
   box-sizing: border-box;
 }
 
-.menuPrincipal dt a {
+.menuPrincipal dt {
   text-decoration: none;
   color: inherit;
 }
@@ -65,7 +63,7 @@ nav {
 
 .footer-container {
   background-color: #000;
-  text-align: center;
+  text-align: left;
   color: #fff;
   font-size: 10px;
   overflow: hidden;
@@ -85,18 +83,43 @@ nav {
 }
 
 .footer-container-texto {
+  font-size: 1.5em;
   clear: both;
 }
 
 .footer-container p {
   display: block;
-  width: 300px;
-  height: 50px;
-  font-size: 30px;
+  width: 60px;
+  font-size: 1em;
+  background: red;
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  text-align: left;
+  width: 200px;
+  height: 150px;
+  transition-property: width, height;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+
+iframe:hover {
+  width: 500px;
+  height: 400px;
+}
+
+.footer-container-footer {
+  display: block;
+  margin: 0;
+  font-size: 4px;
+  text-align: center;
 }
 
 .footer-container h3 {
   display: block;
+  text-align: center;
   margin: 0;
 }
 
@@ -107,6 +130,14 @@ nav {
     font-size: 4em;
   }
 
+  .footer-container-footer {
+    font-size: 9px;
+  }
+
+  .footer-container-texto {
+    font-size: 3em;
+  }
+
   .teste,
   .menuPrincipal {
     display: block;
@@ -117,20 +148,45 @@ nav {
     width: 16.665%;
   }
 
-  .menuPrincipal dt a {
+  .menuPrincipal dt {
     text-transform: uppercase;
     letter-spacing: 0em;
   }
+
   .texste {
     width: 100%;
   }
 
+  iframe {
+    width: 300px;
+    height: 180px;
+  }
+
+  .footer-container p {
+    display: block;
+    width: 100px;
+    font-size: 2em;
+    background: blue;
+  }
+
+  iframe:hover {
+    width: 700px;
+    height: 500px;
+  }
+
   .header-conteiner-imagem {
-    height: 300px;
+    height: 350px;
     max-height: 100%;
-    width: 100%;
-    background-image: url("../assets/index.jfif") no-repeat;
+    width: 80%;
+    margin: 0 auto;
+    background-image: url("../assets/index.jfif");
     background-position: top right;
+  }
+
+  .footer-container-icon {
+    display: inline-block;
+    font-size: 3rem;
+    padding: 0.4rem 2.5rem;
   }
 }
 
@@ -139,6 +195,22 @@ nav {
     font-size: 4em;
   }
 
+  iframe {
+    width: 400px;
+    height: 230px;
+  }
+
+  .footer-container p {
+    display: block;
+    width: 150px;
+    font-size: 3em;
+    background: green;
+  }
+
+  .footer-container-texto {
+    font-size: 5em;
+  }
+
   .teste,
   .menuPrincipal {
     display: block;
@@ -149,10 +221,15 @@ nav {
     width: 16.665%;
   }
 
-  .menuPrincipal dt a {
-    text-transform: uppercase;
-    letter-spacing: 0em;
+  .footer-container-footer {
+    font-size: 9px;
   }
+
+  iframe:hover {
+    width: 1000px;
+    height: 650px;
+  }
+
   .texste {
     width: 100%;
   }
@@ -162,5 +239,11 @@ nav {
     width: 100%;
     background-image: url("../assets/index.jfif");
     background-position: top right;
+  }
+
+  .footer-container-icon {
+    display: inline-block;
+    font-size: 5rem;
+    padding: 0.6rem 5rem;
   }
 }

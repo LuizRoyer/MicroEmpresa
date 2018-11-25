@@ -49,7 +49,6 @@ export class ClienteListComponent implements OnInit {
     this.clienteService.deleteCliente(id).subscribe(() => {
       this.enderecoService.deleteEndereco(cep, proprietario).subscribe(() => {
         this.buscarClientes();
-        console.log(cep + proprietario);
       });
     });
   }

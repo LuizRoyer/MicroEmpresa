@@ -24,7 +24,7 @@
         <input matInput placeholder="Marca" formControlName="marca" #marca>
       </mat-form-field>
 
-      <mat-form-field class="field-full-width-combo">
+      <mat-form-field class="field-full-width">
         <mat-select placeholder="Tamanho" formControlName="tamanho" #tamanho>
           <mat-option value="PP"> PP</mat-option>
           <mat-option value="P"> P</mat-option>
@@ -37,7 +37,7 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <mat-form-field class="field-full-width-combo">
+      <mat-form-field class="field-full-width">
         <mat-select placeholder="Unidade" formControlName="unidade" #unidade>
           <mat-option value="Peca"> Peca</mat-option>
           <mat-option value="Conjunto"> Conjunto</mat-option>
@@ -47,7 +47,7 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <mat-form-field class="field-full-width-combo">
+      <mat-form-field class="field-full-width">
         <mat-select placeholder="Tipo" formControlName="tipo" #tipo>
           <mat-option value="calca"> Calça</mat-option>
           <mat-option value="camisaM"> Camisa Manga </mat-option>
@@ -63,12 +63,11 @@
       </mat-form-field>
 
       <mat-divider></mat-divider>
-      <br><br>
-      <button mat-raised-button color="accent" routerLink="/produtolist">Voltar</button>
       <br>
+      <button mat-raised-button color="accent" routerLink="/produtolist" class="main-container-back">Voltar</button>
       <button type="submit" (click)="updateProduto(descricao.value, valorUnitario.value, observacao.value,
                marca.value, tamanho.value, unidade.value, tipo.value, quantidade.value)"
-        [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary"> Salvar</button>
+        [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary" class="main-container-next"> Salvar</button>
 
     </form>
   </mat-card>

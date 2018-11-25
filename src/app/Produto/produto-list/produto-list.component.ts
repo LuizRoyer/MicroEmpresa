@@ -23,8 +23,6 @@ export class ProdutoListComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduto().subscribe((data: IProduto[]) => {
       this.iProdutos = data;
-      console.log('Buscando Produtos');
-      console.log(this.iProdutos);
     });
   }
   editarProduto(id) {

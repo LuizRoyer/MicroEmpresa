@@ -1,13 +1,23 @@
 .create-form{
     min-width: 150px;
     width: 100%;
+    text-align: center;
 }
 
 .field-full-width{
-    width:100%;
+    width:80%;
 }
 
+.main-container-next{
+  color: #000;
+}
 
-.field-full-width-combo{
-    max-width: 150px;
+.main-container-back:hover {
+  background: rgba(248, 2, 96, 0.8764);
+  color: #000;
+}
+
+.main-container-next:hover {
+  background: rgba(0, 0, 255, 0.8764);
+  color: #fff;
 }

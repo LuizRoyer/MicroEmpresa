@@ -45,7 +45,6 @@ export class EnderecoService {
       uf: uf // Estado
 
     };
-    console.log(cep + proprietario);
     return this.http.post(`${this.uri}/Endereco/update/${idcep}/${proprietario}`, endereco);
   }
 
