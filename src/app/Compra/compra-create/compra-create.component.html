@@ -1,75 +1,102 @@
 <div>
-  <br>
+  <br />
   <mat-card>
     <section class="mat-typography">
-      <h3>Nova Solicitacao de Produto </h3>
+      <h3>Nova Solicitacao de Produto</h3>
     </section>
     <mat-divider></mat-divider>
-    <br><br>
+    <br /><br />
     <form [formGroup]="createForm" class="create-form">
-
       <div>
         <div class="form-group">
-          <div class="col-md-9" >
-          
-              <h2><span>Selecione o Fornecedor:</span></h2>
+          <div class="col-md-9">
+            <h2><span>Selecione o Fornecedor:</span></h2>
             <select (change)="selectChangeHandler($event)">
-              <option *ngFor="let fornecedor of iFornecedores" value={{fornecedor.nome}}>{{fornecedor.nome}}</option>
-            </select>  
-           
+              <option
+                *ngFor="let fornecedor of iFornecedores"
+                value="{{fornecedor.nome}}"
+                >{{ fornecedor.nome }}</option
+              >
+            </select>
           </div>
         </div>
       </div>
 
       <table mat-table [dataSource]="iProdutos" class="table-container-produto">
-
         <ng-container matColumnDef="descricao" #descricao>
-          <th mat-header-cell *matHeaderCellDef>Descrição</th>
-          <td mat-cell *matCellDef="let element">{{element.descricao}} </td>
+          <th mat-header-cell *matHeaderCellDef>Desc</th>
+          <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
         </ng-container>
 
         <ng-container matColumnDef="valorUnitario" #valorUnitario>
-          <th mat-header-cell *matHeaderCellDef>Valor Uni.</th>
-          <td mat-cell *matCellDef="let element">{{element.valorUnitario}}</td>
+          <th mat-header-cell *matHeaderCellDef>Valor</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.valorUnitario }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="observacao" #observacao>
-          <th mat-header-cell *matHeaderCellDef>Observações</th>
-          <td mat-cell *matCellDef="let element">{{element.marca}},{{element.observacao}}</td>
+          <th mat-header-cell *matHeaderCellDef>Obs</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.marca }},{{ element.observacao }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="tamanho" #tamanho>
-          <th mat-header-cell *matHeaderCellDef>Tamanho /</th>
-          <td mat-cell *matCellDef="let element">{{element.tamanho}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="quantidade" #quantidade>
-          <th mat-header-cell *matHeaderCellDef>Estoque /</th>
-          <td mat-cell *matCellDef="let element">{{element.quantidade}}</td>
+          <th mat-header-cell *matHeaderCellDef>Tam</th>
+          <td mat-cell *matCellDef="let element">{{ element.tamanho }}</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef class="mat-column-right"> quantidade </th>
-
+          <th mat-header-cell *matHeaderCellDef class="mat-column-right">
+            Qtde
+          </th>
           <td mat-cell *matCellDef="let element" class="mat-column-right">
             <input type="qtdCompra" id="qtdCompra" #qtdCompra />
-            <button mat-button color="primary" (click)="addProdtuto(element.descricao, element.valorUnitario, element.observacao ,element.tamanho, qtdCompra.value)">Comprar</button>
-            <button mat-button color="warn" (click)="deleteProduto(element.descricao)">Remover</button>
+            <button
+              mat-button
+              color="primary"
+              (click)="
+                addProdtuto(
+                  element.descricao,
+                  element.valorUnitario,
+                  element.observacao,
+                  element.tamanho,
+                  qtdCompra.value
+                )
+              "
+            >
+              Comprar
+            </button>
+            <button
+              mat-button
+              color="warn"
+              (click)="deleteProduto(element.descricao)"
+            >
+              Remover
+            </button>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
-
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
       <mat-divider></mat-divider>
-      <br><br>
-      <button mat-raised-button color="accent" routerLink="/compralist">Voltar</button>
+      <br />
+      <button mat-raised-button color="accent" routerLink="/compralist" class="main-container-back">
+        Voltar
+      </button>
 
-      <button type="submit" (click)="addCarteira()" mat-raised-button color="primary"> Salvar</button>
-
+      <button
+        type="submit"
+        (click)="addCarteira()"
+        mat-raised-button
+        color="primary"
+        class="main-container-next"
+      >
+        Salvar
+      </button>
     </form>
   </mat-card>
-
 </div>

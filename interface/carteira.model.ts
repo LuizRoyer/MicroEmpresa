@@ -1,11 +1,11 @@
-import { IProduto } from "./produto.model";
+import { Produto } from 'classes/Produto';
 
 export interface ICarteira {
 
     codigoCompra: Number;
     nomeFornecedor: String;
-    Produto: IProduto[];
-    dataCompra: String;    
+    Produto: Produto[];
+    dataCompra: String;
     qtdCompra: Number;
     valorProduto: Number;
 }

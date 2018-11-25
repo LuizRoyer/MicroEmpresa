@@ -14,7 +14,6 @@ import { FornecedorService } from 'src/app/service/fornecedor.service';
   styleUrls: ['./compra-create.component.css']
 })
 export class CompraCreateComponent implements OnInit {
-
   Fornecedor: any[];
   createForm: FormGroup;
   selecionarFornecedor: String = '';
@@ -23,14 +22,24 @@ export class CompraCreateComponent implements OnInit {
 
   iFornecedores: IFornecedor[];
   iProdutos: IProduto[];
-  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'tamanho', 'quantidade', 'action'];
+  displayedColumns = [
+    'descricao',
+    'valorUnitario',
+    'observacao',
+    'tamanho',
+    'action'
+  ];
 
-  constructor(private carteiraService: CarteiraService, private produtoService: ProdutoService, private forncedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
+  constructor(
+    private carteiraService: CarteiraService,
+    private produtoService: ProdutoService,
+    private forncedorService: FornecedorService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.createForm = this.fb.group({
-
       nomeFornecedor: [null]
     });
-
   }
 
   selectChangeHandler(event: any) {
@@ -39,24 +48,31 @@ export class CompraCreateComponent implements OnInit {
 
   addCarteira() {
     const data = new Date();
-    const mes = data.getMonth()+1;
-    const data1 = data.getDate() + "-" + mes + "-" +data.getFullYear()  ;
+    const mes = data.getMonth() + 1;
+    const data1 = data.getDate() + '-' + mes + '-' + data.getFullYear();
 
-    for (var i = 0; i < this.listProdutos.length; i++) {
-
-      this.carteiraService.addCarteira(this.selecionarFornecedor, this.listProdutos[i], data1,
-        this.listProdutos[i].qtdCompra, this.listProdutos[i].valorUnitario).subscribe(() => {
-        });
+    for (let i = 0; i < this.listProdutos.length; i++) {
+      this.carteiraService
+        .addCarteira(
+          this.selecionarFornecedor,
+          this.listProdutos[i],
+          data1,
+          this.listProdutos[i].qtdCompra,
+          this.listProdutos[i].valorUnitario
+        )
+        .subscribe(() => {});
     }
 
     this.router.navigate(['/compralist']);
   }
-
+/*
   removerProduto(id, nomeProduto) {
-    this.carteiraService.deleteCarteiraProduto(id, nomeProduto).subscribe(() => {
-      console.log(this.carteiraService);
-    });
-  }
+    this.carteiraService
+      .deleteCarteiraProduto(id, nomeProduto)
+      .subscribe(() => {
+        console.log(this.carteiraService);
+      });
+  }*/
 
   buscarProduto() {
     this.produtoService.getProduto().subscribe((data: IProduto[]) => {
@@ -66,9 +82,10 @@ export class CompraCreateComponent implements OnInit {
     });
   }
   deleteProduto(pdescricao) {
-
     this.listProdutos.forEach((item, index) => {
-      if (item.descricao === pdescricao) this.listProdutos.splice(index, 1);
+      if (item.descricao === pdescricao) {
+        this.listProdutos.splice(index, 1);
+      }
       console.log(index);
     });
 
@@ -76,9 +93,17 @@ export class CompraCreateComponent implements OnInit {
   }
 
   addProdtuto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra) {
-
-    this.listProdutos.push(new Produto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra, (pvalorUnitario * pqtdCompra)));
-    console.log("Cadastro efetuado com sucesso");
+    this.listProdutos.push(
+      new Produto(
+        pdescricao,
+        pvalorUnitario,
+        pobservacao,
+        ptamanho,
+        pqtdCompra,
+        pvalorUnitario * pqtdCompra
+      )
+    );
+    console.log('Cadastro efetuado com sucesso');
     console.log(this.listProdutos);
   }
 
@@ -87,16 +112,11 @@ export class CompraCreateComponent implements OnInit {
       this.iFornecedores = data;
       console.log('Buscando Fornecedor');
       console.log(this.iFornecedores);
-
     });
   }
 
   ngOnInit() {
     this.buscarProduto();
     this.buscarForncedores();
-
-
   }
-
-
 }

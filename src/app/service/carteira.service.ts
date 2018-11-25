@@ -5,14 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CarteiraService {
-
   uri = 'http://localhost:4000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCarteira() {
     return this.http.get(`${this.uri}/Carteira`);
-    this.http
   }
 
   getCarteiraById(id) {
@@ -21,37 +19,36 @@ export class CarteiraService {
 
   addCarteira(nomeFornecedor, Produto, dataCompra, qtdCompra, valorProduto) {
     const carteira = {
-     
       nomeFornecedor: nomeFornecedor,
       Produto: Produto,
-      dataCompra: dataCompra,   
+      dataCompra: dataCompra,
       qtdCompra: qtdCompra,
-      valorProduto: valorProduto,
+      valorProduto: valorProduto
     };
     return this.http.post(`${this.uri}/Carteira/add`, carteira);
   }
 
-  updateCarteira(id, nomeFornecedor, Produto, dataCompra,qtdCompra, valorProduto) {
+  updateCarteira(
+    id,
+    nomeFornecedor,
+    Produto,
+    dataCompra,
+    qtdCompra,
+    valorProduto
+  ) {
     const carteira = {
-      
       nomeFornecedor: nomeFornecedor,
       Produto: Produto,
-      dataCompra: dataCompra,      
+      dataCompra: dataCompra,
       qtdCompra: qtdCompra,
-      valorProduto: valorProduto,
+      valorProduto: valorProduto
     };
     return this.http.post(`${this.uri}/Carteira/update/${id}`, carteira);
   }
 
-  deleteCarteira(nomeFornecedor,dataCompra) {
-    return this.http.get(`${this.uri}/Carteira/delete/${nomeFornecedor}/${dataCompra}`);
+  deleteCarteira(id) {
+    return this.http.get(
+      `${this.uri}/Carteira/delete/${id}`
+    );
   }
-
-  deleteCarteiraProduto(id,nomeProduto) {
-    return this.http.get(`${this.uri}/Carteira/delete/${id}/${nomeProduto}`);
-  }
-
-
-
 }
-
