@@ -15,7 +15,7 @@ import { FornecedorService } from 'src/app/service/fornecedor.service';
 })
 export class CompraCreateComponent implements OnInit {
 
-Fornecedor:any[];
+  Fornecedor: any[];
   createForm: FormGroup;
   selecionarFornecedor: String = '';
 
@@ -27,31 +27,29 @@ Fornecedor:any[];
 
   constructor(private carteiraService: CarteiraService, private produtoService: ProdutoService, private forncedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
     this.createForm = this.fb.group({
-      
+
       nomeFornecedor: [null]
     });
-    
+
   }
 
-  selectChangeHandler (event: any) { 
+  selectChangeHandler(event: any) {
     this.selecionarFornecedor = event.target.value;
   }
 
   addCarteira() {
+    const data = new Date();
+    const mes = data.getMonth()+1;
+    const data1 = data.getDate() + "-" + mes + "-" +data.getFullYear()  ;
 
     for (var i = 0; i < this.listProdutos.length; i++) {
 
-      console.log(this.selecionarFornecedor);
-      console.log(this.listProdutos[i]);
+      this.carteiraService.addCarteira(this.selecionarFornecedor, this.listProdutos[i], data1,
+        this.listProdutos[i].qtdCompra, this.listProdutos[i].valorUnitario).subscribe(() => {
+        });
+    }
 
-      this.carteiraService.addCarteira(this.selecionarFornecedor, this.listProdutos[i], new Date(), 
-      status, this.listProdutos[i].qtdCompra, this.listProdutos[i].valorUnitario).subscribe(() => {
-      });
-     
-    } 
-   
-
-
+    this.router.navigate(['/compralist']);
   }
 
   removerProduto(id, nomeProduto) {
@@ -88,15 +86,15 @@ Fornecedor:any[];
     this.forncedorService.getFornecedor().subscribe((data: IFornecedor[]) => {
       this.iFornecedores = data;
       console.log('Buscando Fornecedor');
-      console.log(this.iFornecedores);  
+      console.log(this.iFornecedores);
 
     });
   }
 
   ngOnInit() {
     this.buscarProduto();
-    this.buscarForncedores();  
-   
+    this.buscarForncedores();
+
 
   }
 

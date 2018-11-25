@@ -15,11 +15,7 @@ let carteira = new Carteira({
     },
     dataCompra: {
         type: String
-    },
-    status: {
-        type: String,
-        default:'Ativo'
-    },
+    },    
     quantidade: {
         type: Number
     },

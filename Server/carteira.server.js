@@ -39,8 +39,7 @@ router.route('/Carteira/update/:id').post((req, res) => {
             carteira.codigoCompra= req.body.codigoCompra;
             carteira.nomeFornecedor= req.body.nomeFornecedor;
             carteira.Produto= req.body.Produto;
-            carteira.dataCompra = req.body.dataCompra;
-            carteira.status= req.body.status;
+            carteira.dataCompra = req.body.dataCompra;            
             carteira. qtdCompra= req.body.qtdCompra;
             carteira.valorProduto= req.body.valorProduto;
 
@@ -53,8 +52,8 @@ router.route('/Carteira/update/:id').post((req, res) => {
     });
 });
 
-router.route('/Carteira/delete/:id').get((req, res) => {
-    Carteira.findByIdAndRemove({ _id: req.params.id }, (err, carteira) => {
+router.route('/Carteira/delete/:nomeFornecedor/:dataCompra').get((req, res) => {
+    Carteira.findByIdAndRemove({nomeFornecedor:req.params.nomeFornecedor, dataCompra:req.params.dataCompra}, (err, carteira) => {
         if (err)
             res.json(err);
         else

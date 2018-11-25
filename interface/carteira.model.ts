@@ -5,8 +5,7 @@ export interface ICarteira {
     codigoCompra: Number;
     nomeFornecedor: String;
     Produto: IProduto[];
-    dataCompra: String;
-    status: String;
+    dataCompra: String;    
     qtdCompra: Number;
     valorProduto: Number;
 }
