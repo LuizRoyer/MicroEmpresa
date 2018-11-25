@@ -1,5 +1,5 @@
 import express from 'express';
-import Carteira from '../model/cliente';
+import Carteira from '../model/carteira';
 
 const router = express.Router();
 

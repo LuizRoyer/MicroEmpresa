@@ -1,24 +1,24 @@
 import mongoose from 'mongoose';
 
-const Cliente = mongoose.Schema;
+const Carteira = mongoose.Schema;
 
-let cliente = new Cliente({
+let carteira = new Carteira({
 
     codigoCompra: {
         type: Number
     },
-    codigoFornecedor: {
-        type: Number
+    nomeFornecedor: {
+        type: String
     },
-    codigoProduto: {
-        type: Number
+    Produto: {
+        type: []
     },
     dataCompra: {
         type: String
     },
     status: {
         type: String,
-        default: Ativo
+        default:'Ativo'
     },
     quantidade: {
         type: Number
@@ -28,7 +28,7 @@ let cliente = new Cliente({
     },
 });
 
-export default mongoose.model('Cliente', cliente);
+export default mongoose.model('Carteira', carteira);
 
 
 

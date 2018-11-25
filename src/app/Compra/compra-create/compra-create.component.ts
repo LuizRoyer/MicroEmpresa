@@ -15,32 +15,43 @@ import { FornecedorService } from 'src/app/service/fornecedor.service';
 })
 export class CompraCreateComponent implements OnInit {
 
+Fornecedor:any[];
   createForm: FormGroup;
-  Carteira: any = {};
+  selecionarFornecedor: String = '';
 
   listProdutos = new Array<Produto>();
 
-  iFornecedores:IFornecedor[];
+  iFornecedores: IFornecedor[];
   iProdutos: IProduto[];
-  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'tamanho','quantidade','action'];
+  displayedColumns = ['descricao', 'valorUnitario', 'observacao', 'tamanho', 'quantidade', 'action'];
 
-  constructor(private carteiraService: CarteiraService, private produtoService: ProdutoService,private forncedorService: FornecedorService,private fb: FormBuilder, private router: Router) {
+  constructor(private carteiraService: CarteiraService, private produtoService: ProdutoService, private forncedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
     this.createForm = this.fb.group({
-
-      nomeFornecedor: ['', Validators.required],
-
+      
+      nomeFornecedor: [null]
     });
+    
   }
-  addCarteira(nomeFornecedor) {
+
+  selectChangeHandler (event: any) { 
+    this.selecionarFornecedor = event.target.value;
+  }
+
+  addCarteira() {
 
     for (var i = 0; i < this.listProdutos.length; i++) {
 
-      this.carteiraService.addCarteira(nomeFornecedor, this.listProdutos[i], new Date(), status, this.listProdutos[i].qtdCompra, this.listProdutos[i].valorUnitario).subscribe(() => {
+      console.log(this.selecionarFornecedor);
+      console.log(this.listProdutos[i]);
+
+      this.carteiraService.addCarteira(this.selecionarFornecedor, this.listProdutos[i], new Date(), 
+      status, this.listProdutos[i].qtdCompra, this.listProdutos[i].valorUnitario).subscribe(() => {
       });
      
-    }
+    } 
+   
 
-    this.router.navigate(['/fornecedorlist']);
+
   }
 
   removerProduto(id, nomeProduto) {
@@ -57,18 +68,18 @@ export class CompraCreateComponent implements OnInit {
     });
   }
   deleteProduto(pdescricao) {
-    
-    this.listProdutos.forEach( (item, index) => {
-      if(item === pdescricao) this.listProdutos.splice(index,0);
 
+    this.listProdutos.forEach((item, index) => {
+      if (item.descricao === pdescricao) this.listProdutos.splice(index, 1);
+      console.log(index);
     });
 
     console.log(this.listProdutos);
   }
 
-  addProdtuto(pdescricao, pvalorUnitario, pobservacao,ptamanho, pqtdCompra) {
+  addProdtuto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra) {
 
-    this.listProdutos.push(new Produto(pdescricao, pvalorUnitario, pobservacao, ptamanho,pqtdCompra, (pvalorUnitario * pqtdCompra)));
+    this.listProdutos.push(new Produto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra, (pvalorUnitario * pqtdCompra)));
     console.log("Cadastro efetuado com sucesso");
     console.log(this.listProdutos);
   }
@@ -77,14 +88,17 @@ export class CompraCreateComponent implements OnInit {
     this.forncedorService.getFornecedor().subscribe((data: IFornecedor[]) => {
       this.iFornecedores = data;
       console.log('Buscando Fornecedor');
-      console.log(this.iFornecedores);
+      console.log(this.iFornecedores);  
 
     });
   }
 
   ngOnInit() {
     this.buscarProduto();
-    this.buscarForncedores();
+    this.buscarForncedores();  
+   
+
   }
+
 
 }
