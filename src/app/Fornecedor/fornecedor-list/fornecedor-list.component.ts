@@ -18,6 +18,7 @@ export class FornecedorListComponent implements OnInit {
   iEnderecoFornecedores: IEnderecoFornecedor[];
   iFornecedores: IFornecedor[];
   iEnderecos: IEndereco[];
+  iEnderecosos: any = {};
 
   displayedColumns = [
     'nome',
@@ -49,9 +50,16 @@ export class FornecedorListComponent implements OnInit {
     this.router.navigate([`/fornecedoredit/${id}`]);
   }
 
-  deleteFornecedor(id) {
+  deleteFornecedor(id, cep, proprietario) {
     this.forncedorService.deleteFornecedor(id).subscribe(() => {
-      this.buscarFornecedor();
+      this.enderecoService.getIdEndereco(cep, proprietario).subscribe(ress => {
+        this.iEnderecosos = ress;
+        this.enderecoService
+          .deleteEndereco(this.iEnderecosos._id)
+          .subscribe(() => {
+            this.buscarFornecedor();
+          });
+      });
     });
   }
 }

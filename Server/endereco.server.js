@@ -55,13 +55,13 @@ router.route('/Endereco/update/:cep/:proprietario').post((req, res) => {
     });
 });
 
-router.route('/Endereco/delete/:cep/:proprietario').get((req, res) => {
-    Endereco.findByIdAndRemove({cep:req.params.cep, proprietario:req.params.proprietario}, (err, endereco) => {
-        if (err)
-            res.json(err);
-        else
-            res.json('Deletado com sucesso');
-    })
+router.route('/Endereco/:id').get((req, res) => {
+  Endereco.findByIdAndRemove({ _id: req.params.id }, (err, cliente) => {
+      if (err)
+          res.json(err);
+      else
+          res.json('Deletado com sucesso');
+  })
 })
 
 

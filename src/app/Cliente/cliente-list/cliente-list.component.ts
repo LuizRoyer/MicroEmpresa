@@ -17,7 +17,7 @@ import { IEnderecoCliente } from 'interface/enderecoCliente.model';
 })
 export class ClienteListComponent implements OnInit {
   iClientes: ICliente[];
-  iEnderecos: IEndereco[];
+  iEnderecos: any = {};
   iEnderecoClientes: IEnderecoCliente[];
   clieteEndereco: EnderecoCliente;
   pEndereco: Endereco[];
@@ -47,8 +47,11 @@ export class ClienteListComponent implements OnInit {
 
   deleteCliente(id, cep, proprietario) {
     this.clienteService.deleteCliente(id).subscribe(() => {
-      this.enderecoService.deleteEndereco(cep, proprietario).subscribe(() => {
-        this.buscarClientes();
+      this.enderecoService.getIdEndereco(cep, proprietario).subscribe(ress => {
+        this.iEnderecos = ress;
+        this.enderecoService.deleteEndereco(this.iEnderecos._id).subscribe(() => {
+          this.buscarClientes();
+        });
       });
     });
   }

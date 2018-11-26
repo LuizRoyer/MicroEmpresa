@@ -48,8 +48,8 @@ export class EnderecoService {
     return this.http.post(`${this.uri}/Endereco/update/${idcep}/${nomeProprietario}`, endereco);
   }
 
-  deleteEndereco(cep, proprietario) {
-    return this.http.get(`${this.uri}/Endereco/delete/${cep}/${proprietario}`);
+  deleteEndereco(id) {
+    return this.http.get(`${this.uri}/Endereco/${id}`);
   }
 
   buscar(cep) {
