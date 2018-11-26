@@ -83,8 +83,6 @@ export class VendaCreateComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduto().subscribe((data: IProduto[]) => {
       this.iProdutos = data;
-      console.log('Buscando Produtos');
-      console.log(this.iProdutos);
     });
   }
   deleteProduto(pdescricao) {
@@ -92,10 +90,8 @@ export class VendaCreateComponent implements OnInit {
       if (item.descricao === pdescricao) {
         this.listProdutos.splice(index, 1);
       }
-      console.log(index);
     });
 
-    console.log(this.listProdutos);
   }
 
   addProdtuto(
@@ -107,8 +103,6 @@ export class VendaCreateComponent implements OnInit {
     pqtdCompra,
     qtdDoProdutoI
   ) {
-    console.log(qtdDoProdutoI);
-    console.log(id);
     this.listProdutos.push(
       new Produto(
         id,
@@ -121,15 +115,11 @@ export class VendaCreateComponent implements OnInit {
         qtdDoProdutoI
       )
     );
-    console.log('Cadastro efetuado com sucesso');
-    console.log(this.listProdutos);
   }
 
   buscarCliente() {
     this.clienteService.getCliente().subscribe((data: ICliente[]) => {
       this.iClientes = data;
-      console.log('Buscando Fornecedor');
-      console.log(this.iClientes);
     });
   }
 

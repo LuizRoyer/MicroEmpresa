@@ -18,6 +18,7 @@ export class CompraListComponent implements OnInit {
   displayedColumns = [
     'nomeFornecedor',
     'data',
+    'descricao',
     'quantidade',
     'valorTotal',
     'action'
@@ -39,7 +40,6 @@ export class CompraListComponent implements OnInit {
       let listasa: ICarteira[];
       // tslint:disable-next-line:no-shadowed-variable
       this.iCarteira = data;
-      console.log(data);
 
       let quantidade;
       let valor;
@@ -67,7 +67,6 @@ export class CompraListComponent implements OnInit {
         );
       }*/
       }
-      console.log(Carteira);
     });
   }
 

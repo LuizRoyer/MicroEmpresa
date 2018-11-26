@@ -86,8 +86,6 @@ export class CompraCreateComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduto().subscribe((data: IProduto[]) => {
       this.iProdutos = data;
-      console.log('Buscando Produtos');
-      console.log(this.iProdutos[0]._id);
     });
   }
   deleteProduto(pdescricao) {
@@ -95,10 +93,8 @@ export class CompraCreateComponent implements OnInit {
       if (item.descricao === pdescricao) {
         this.listProdutos.splice(index, 1);
       }
-      console.log(index);
     });
 
-    console.log(this.listProdutos);
   }
 
   addProdtuto(
@@ -122,8 +118,6 @@ export class CompraCreateComponent implements OnInit {
         qtdDoProdutoI
       )
     );
-    console.log('Cadastro efetuado com sucesso');
-    console.log(this.listProdutos);
   }
 
   buscarForncedores() {
@@ -131,8 +125,6 @@ export class CompraCreateComponent implements OnInit {
       .getFornecedorAtivo()
       .subscribe((data: IFornecedor[]) => {
         this.iFornecedores = data;
-        console.log('Buscando Fornecedor');
-        console.log(this.iFornecedores);
       });
   }
 
