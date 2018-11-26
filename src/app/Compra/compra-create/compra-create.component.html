@@ -58,11 +58,13 @@
               color="primary"
               (click)="
                 addProdtuto(
+                  element._id,
                   element.descricao,
                   element.valorUnitario,
                   element.observacao,
                   element.tamanho,
-                  qtdCompra.value
+                  qtdCompra.value,
+                  element.quantidade
                 )
               "
             >

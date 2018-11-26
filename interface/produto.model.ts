@@ -1,5 +1,6 @@
 export interface IProduto {
 
+    _id: String;
     descricao: String;
     valorUnitario: Number;
     marca: String;

@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+td{
+  width: 30px;
+}
+
 input {
   width: 40px;
 }

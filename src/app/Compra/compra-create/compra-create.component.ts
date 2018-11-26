@@ -60,12 +60,21 @@ export class CompraCreateComponent implements OnInit {
           this.listProdutos[i].qtdCompra,
           this.listProdutos[i].valorUnitario
         )
-        .subscribe(() => {});
+        .subscribe(() => {
+          const id = this.listProdutos[i]._id;
+          const qtdPr =
+            +this.listProdutos[i].qtdDoProdutoI +
+            +this.listProdutos[i].qtdCompra;
+          this.produtoService
+            .updateQuantidadeProduto(id, qtdPr)
+            .subscribe(() => {});
+        });
     }
 
     this.router.navigate(['/compralist']);
   }
-/*
+
+  /*
   removerProduto(id, nomeProduto) {
     this.carteiraService
       .deleteCarteiraProduto(id, nomeProduto)
@@ -78,7 +87,7 @@ export class CompraCreateComponent implements OnInit {
     this.produtoService.getProduto().subscribe((data: IProduto[]) => {
       this.iProdutos = data;
       console.log('Buscando Produtos');
-      console.log(this.iProdutos);
+      console.log(this.iProdutos[0]._id);
     });
   }
   deleteProduto(pdescricao) {
@@ -92,15 +101,25 @@ export class CompraCreateComponent implements OnInit {
     console.log(this.listProdutos);
   }
 
-  addProdtuto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra) {
+  addProdtuto(
+    id,
+    pdescricao,
+    pvalorUnitario,
+    pobservacao,
+    ptamanho,
+    pqtdCompra,
+    qtdDoProdutoI
+  ) {
     this.listProdutos.push(
       new Produto(
+        id,
         pdescricao,
         pvalorUnitario,
         pobservacao,
         ptamanho,
         pqtdCompra,
-        pvalorUnitario * pqtdCompra
+        pvalorUnitario * pqtdCompra,
+        qtdDoProdutoI
       )
     );
     console.log('Cadastro efetuado com sucesso');
@@ -108,11 +127,13 @@ export class CompraCreateComponent implements OnInit {
   }
 
   buscarForncedores() {
-    this.forncedorService.getFornecedor().subscribe((data: IFornecedor[]) => {
-      this.iFornecedores = data;
-      console.log('Buscando Fornecedor');
-      console.log(this.iFornecedores);
-    });
+    this.forncedorService
+      .getFornecedorAtivo()
+      .subscribe((data: IFornecedor[]) => {
+        this.iFornecedores = data;
+        console.log('Buscando Fornecedor');
+        console.log(this.iFornecedores);
+      });
   }
 
   ngOnInit() {

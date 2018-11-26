@@ -14,7 +14,6 @@ import { ClienteService } from 'src/app/service/cliente.service';
   styleUrls: ['./venda-create.component.css']
 })
 export class VendaCreateComponent implements OnInit {
-
   Cliente: any[];
   createForm: FormGroup;
   selecionarCliente: String = '';
@@ -31,17 +30,18 @@ export class VendaCreateComponent implements OnInit {
     'action'
   ];
 
-  constructor( private vendaService: VendaService,
-    private produtoService: ProdutoService, 
-    private clienteService: ClienteService,   
+  constructor(
+    private vendaService: VendaService,
+    private produtoService: ProdutoService,
+    private clienteService: ClienteService,
     private fb: FormBuilder,
     private router: Router
   ) {
     this.createForm = this.fb.group({
       nomeCliente: [null],
-      desconto:  '',
-      pagamento:  '',
-      parcela: '',
+      desconto: '',
+      pagamento: '',
+      parcela: ''
     });
   }
 
@@ -49,17 +49,15 @@ export class VendaCreateComponent implements OnInit {
     this.selecionarCliente = event.target.value;
   }
 
-  addVenda(desconto,pagamento,parcela) {
+  addVenda(desconto, pagamento, parcela) {
     const data = new Date();
     const mes = data.getMonth() + 1;
     const data1 = data.getDate() + '-' + mes + '-' + data.getFullYear();
 
-
-   for (let i = 0; i < this.listProdutos.length; i++) {
-   
+    for (let i = 0; i < this.listProdutos.length; i++) {
       this.vendaService
         .addVenda(
-          this.selecionarCliente,          
+          this.selecionarCliente,
           data1,
           desconto,
           pagamento,
@@ -67,11 +65,19 @@ export class VendaCreateComponent implements OnInit {
           this.listProdutos[i],
           this.listProdutos[i].valorTotal
         )
-        .subscribe(() => {});
-        }
+        .subscribe(() => {
 
-    this.router.navigate(['/vendalist']); 
- 
+          const id = this.listProdutos[i]._id;
+          const qtdPr =
+            +this.listProdutos[i].qtdDoProdutoI -
+            +this.listProdutos[i].qtdCompra;
+          this.produtoService
+            .updateQuantidadeProduto(id, qtdPr)
+            .subscribe(() => {});
+        });
+    }
+
+    this.router.navigate(['/vendalist']);
   }
 
   buscarProduto() {
@@ -92,15 +98,27 @@ export class VendaCreateComponent implements OnInit {
     console.log(this.listProdutos);
   }
 
-  addProdtuto(pdescricao, pvalorUnitario, pobservacao, ptamanho, pqtdCompra) {
+  addProdtuto(
+    id,
+    pdescricao,
+    pvalorUnitario,
+    pobservacao,
+    ptamanho,
+    pqtdCompra,
+    qtdDoProdutoI
+  ) {
+    console.log(qtdDoProdutoI);
+    console.log(id);
     this.listProdutos.push(
       new Produto(
+        id,
         pdescricao,
         pvalorUnitario,
         pobservacao,
         ptamanho,
         pqtdCompra,
-        pvalorUnitario * pqtdCompra
+        pvalorUnitario * pqtdCompra,
+        qtdDoProdutoI
       )
     );
     console.log('Cadastro efetuado com sucesso');
@@ -120,4 +138,3 @@ export class VendaCreateComponent implements OnInit {
     this.buscarCliente();
   }
 }
-

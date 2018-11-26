@@ -14,11 +14,15 @@ export class FornecedorService {
     return this.http.get(`${this.uri}/Fornecedor`);
   }
 
+  getFornecedorAtivo() {
+    return this.http.get(`${this.uri}/Fornecedor/ativo/`);
+  }
+
   getFornecedorById(id) {
     return this.http.get(`${this.uri}/Fornecedor/${id}`);
   }
 
-  addFornecedor(nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao,cep) {
+  addFornecedor(nome, nomeFantasia, status, CNPJ, atividade, telefone, celular, email, observacao, cep) {
     const fornecedor = {
       nome: nome,
       nomeFantasia: nomeFantasia,

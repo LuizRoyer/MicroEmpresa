@@ -12,6 +12,16 @@ router.route('/Fornecedor').get((req, res) => {
     });
 });
 
+
+router.route('/Fornecedor/ativo/').get((req, res) => {
+  Fornecedor.find({status: "Ativo"},(err, fornecedor) => {
+      if (err)
+          console.log(err);
+      else
+          res.json(fornecedor);
+  });
+});
+
 router.route('/Fornecedor/:id').get((req, res) => {
     Fornecedor.findById(req.params.id, (err, fornecedor) => {
         if (err)
@@ -30,6 +40,8 @@ router.route('/Fornecedor/add').post((req, res) => {
             res.status(400).send('Erro ao adicionar um Fornecedor');
         });
 });
+
+// update.({$and:[{descricao: "Casaco"}, {tamanho:"G"}]}, {$set:{quantidade:10}})
 
 router.route('/Fornecedor/update/:id').post((req, res) => {
     Fornecedor.findById(req.params.id, (err, fornecedor) => {

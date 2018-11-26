@@ -5,21 +5,32 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProdutoService {
-
   uri = 'http://localhost:4000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProduto() {
     return this.http.get(`${this.uri}/Produto`);
-    this.http
   }
 
   getProdutoById(id) {
     return this.http.get(`${this.uri}/Produto/${id}`);
   }
 
-  addProduto(descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
+  updateQuantidadeProduto(id, qtd) {
+    return this.http.get(`${this.uri}/Produto/${id}/${qtd}`);
+  }
+
+  addProduto(
+    descricao,
+    valorUnitario,
+    observacao,
+    marca,
+    tamanho,
+    unidade,
+    tipo,
+    quantidade
+  ) {
     const produto = {
       descricao: descricao,
       valorUnitario: valorUnitario,
@@ -28,12 +39,22 @@ export class ProdutoService {
       tamanho: tamanho,
       unidade: unidade,
       tipo: tipo,
-      quantidade:quantidade,
+      quantidade: quantidade
     };
     return this.http.post(`${this.uri}/Produto/add`, produto);
   }
 
-  updateProduto(id, descricao, valorUnitario, observacao, marca, tamanho, unidade, tipo,quantidade) {
+  updateProduto(
+    id,
+    descricao,
+    valorUnitario,
+    observacao,
+    marca,
+    tamanho,
+    unidade,
+    tipo,
+    quantidade
+  ) {
     const produto = {
       descricao: descricao,
       valorUnitario: valorUnitario,
@@ -42,7 +63,7 @@ export class ProdutoService {
       tamanho: tamanho,
       unidade: unidade,
       tipo: tipo,
-      quantidade:quantidade,
+      quantidade: quantidade
     };
     return this.http.post(`${this.uri}/Produto/update/${id}`, produto);
   }
@@ -50,5 +71,4 @@ export class ProdutoService {
   deleteProduto(id) {
     return this.http.get(`${this.uri}/Produto/delete/${id}`);
   }
-
 }

@@ -21,6 +21,16 @@ router.route('/Produto/:id').get((req, res) => {
     });
 });
 
+
+router.route('/Produto/:id/:qtd').get((req, res) => {
+  Produto.update({_id:req.params.id},{$set:{quantidade:req.params.qtd}}, (err, produto) => {
+      if (err)
+          console.log(err)
+      else
+          res.json(produto);
+  });
+});
+
 router.route('/Produto/add').post((req, res) => {
     let produto = new Produto(req.body);
     produto.save()
