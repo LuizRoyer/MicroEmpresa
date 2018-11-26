@@ -9,7 +9,6 @@ import EnderecoServer from './endereco.server.js';
 import ProdutoServer from './produto.server.js';
 import VendaServer from './venda.server.js';
 import CarteiraServer from './carteira.server.js';
-import ItemVendaServer from './itemVenda.server.js';
 
 const app = express();
 
@@ -30,7 +29,7 @@ app.use('/', EnderecoServer);
 app.use('/', ProdutoServer);
 app.use('/', VendaServer);
 app.use('/', CarteiraServer);
-app.use('/', ItemVendaServer);
+
 
 app.listen(4000, () => console.log('Express server Rodando na porta 4000'));
 

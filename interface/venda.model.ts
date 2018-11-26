@@ -1,12 +1,12 @@
-import { IItemVenda } from "./itemVenda.model";
-
 export interface IVenda {
 
-    notaFiscal: Number;
-    codigoCliente: Number;
-    data: String;
-    desconto: Number;
-    pagamento: Number;
-    parcela: Number;
-    itemVenda:IItemVenda;
+    notaFiscal: Number;    
+    nomeCliente:  String;    
+    dataVenda: String;   
+    desconto:  Number;  
+    pagamento:  String;    
+    parcela: Number;   
+    Produto:[];        
+    valorFinal: Number;
+    
 }

@@ -10,7 +10,7 @@ let venda = new Venda({
     nomeCliente: {
         type: String
     },
-    data: {
+    dataVenda: {
         type: String
     },
     desconto: {
@@ -22,9 +22,12 @@ let venda = new Venda({
     parcela: {
         type: Number
     },
-    itemVenda: {
-        type: String
-    },
+    Produto: {
+        type: []
+    },    
+    valorFinal: {
+        type: Number
+    }
 });
 
 export default mongoose.model('Venda', venda);

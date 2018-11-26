@@ -20,28 +20,28 @@ export class VendaService {
     return this.http.get(`${this.uri}/Venda/${id}`);
   }
 
-  addVenda(notaFiscal, codigoCliente, data, desconto, pagamento, parcela, IItemVenda) {
+  addVenda(nomeCliente, dataVenda, desconto, pagamento, parcela, Produto, valorFinal) {
     const venda = {
-      notaFiscal: notaFiscal,
-      codigoCliente: codigoCliente,
-      data: data,
+      nomeCliente: nomeCliente,
+      dataVenda: dataVenda,
       desconto: desconto,
       pagamento: pagamento,
       parcela: parcela,
-      itemVenda: IItemVenda,
+      Produto: Produto,
+      valorFinal: valorFinal
     };
     return this.http.post(`${this.uri}/Venda/add`, venda);
   }
 
-  updateVenda(id, notaFiscal, codigoCliente, data, desconto, pagamento, parcela, IItemVenda) {
+  updateVenda(id, nomeCliente, dataVenda, desconto, pagamento, parcela, Produto, valorFinal) {
     const venda = {
-      notaFiscal: notaFiscal,
-      codigoCliente: codigoCliente,
-      data: data,
+      nomeCliente: nomeCliente,
+      dataVenda: dataVenda,
       desconto: desconto,
       pagamento: pagamento,
       parcela: parcela,
-      itemVenda: IItemVenda,
+      Produto: Produto,
+      valorFinal: valorFinal,
 
     };
     return this.http.post(`${this.uri}/Venda/update/${id}`, venda);

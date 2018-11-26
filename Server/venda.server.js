@@ -24,7 +24,7 @@ router.route('/Venda/:id').get((req, res) => {
 router.route('/Venda/add').post((req, res) => {
     let venda = new Venda(req.body);
     venda.save()
-        .then(venda => {
+        .then(venda => {           
             res.status(200).json({ 'venda': ' Venda salva com sucesso' });
         }).catch(err => {
             res.status(400).send('Erro ao salvar uma Venda');
