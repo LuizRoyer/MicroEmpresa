@@ -10,6 +10,10 @@ tr:nth-of-type(2n){
   background: #ccc;
 }
 
+td{
+  width: 30px;
+}
+
 th{
   background: #ccc;
 }
