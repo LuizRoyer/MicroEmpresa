@@ -21,7 +21,6 @@ router.route('/Produto/:id').get((req, res) => {
     });
 });
 
-
 router.route('/Produto/:id/:qtd').get((req, res) => {
   Produto.update({_id:req.params.id},{$set:{quantidade:req.params.qtd}}, (err, produto) => {
       if (err)
@@ -64,7 +63,7 @@ router.route('/Produto/update/:id').post((req, res) => {
     });
 });
 
-router.route('/Produto/delete/:id').get((req, res) => {
+router.route('/delProduto/:id').get((req, res) => {
     Produto.findByIdAndRemove({ _id: req.params.id }, (err, produto) => {
         if (err)
             res.json(err);

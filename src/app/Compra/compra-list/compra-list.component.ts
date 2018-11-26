@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { ICarteira } from 'interface/carteira.model';
 import { Carteira } from 'classes/Carteira';
+import { ProdutoService } from 'src/app/service/produto.service';
 @Component({
   selector: 'app-compra-list',
   templateUrl: './compra-list.component.html',
@@ -12,6 +13,7 @@ import { Carteira } from 'classes/Carteira';
 export class CompraListComponent implements OnInit {
   iCarteira: ICarteira[];
   carteira: Carteira;
+  produto: any = {};
 
   displayedColumns = [
     'nomeFornecedor',
@@ -23,6 +25,7 @@ export class CompraListComponent implements OnInit {
 
   constructor(
     private carteiraService: CarteiraService,
+    private produtoService: ProdutoService,
     private router: Router
   ) {}
 
@@ -71,8 +74,15 @@ export class CompraListComponent implements OnInit {
   editarCarteira(id) {
     this.router.navigate([`/carteiraedit/${id}`]);
   }
-  deleteCarteira(id) {
+  deleteCarteira(id, idProduto, qtdProduto) {
     this.carteiraService.deleteCarteira(id).subscribe(() => {
+      this.produtoService.getProdutoById(idProduto).subscribe(data => {
+        this.produto = data;
+        const quantidade = +this.produto.quantidade - +qtdProduto;
+        this.produtoService
+          .updateQuantidadeProduto(idProduto, quantidade)
+          .subscribe(() => {});
+      });
       this.buscarCarteira();
     });
   }

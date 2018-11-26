@@ -69,6 +69,6 @@ export class ProdutoService {
   }
 
   deleteProduto(id) {
-    return this.http.get(`${this.uri}/Produto/delete/${id}`);
+    return this.http.get(`${this.uri}/delProduto/${id}`);
   }
 }
