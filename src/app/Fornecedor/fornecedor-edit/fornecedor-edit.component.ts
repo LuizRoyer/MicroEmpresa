@@ -14,6 +14,7 @@ import { EnderecoService } from '../../service/endereco.service';
 export class FornecedorEditComponent implements OnInit {
   id: String;
   idCep: String;
+  nomeFornecedor: String;
   ifornecedor: any = {};
   iendereco: any = {};
   Endereco: any = {};
@@ -71,7 +72,7 @@ export class FornecedorEditComponent implements OnInit {
             .setValue(this.ifornecedor.observacao);
           this.updateForm.get('cep').setValue(this.ifornecedor.cep);
           this.idCep = this.ifornecedor.cep;
-
+          this.nomeFornecedor = this.ifornecedor.nome;
           this.enderecoService
             .getIdEndereco(this.ifornecedor.cep, this.ifornecedor.nome)
             .subscribe(ress => {
@@ -130,6 +131,7 @@ export class FornecedorEditComponent implements OnInit {
 
     this.enderecoService
       .updateEndereco(
+        this.nomeFornecedor,
         nome,
         this.idCep,
         cep,

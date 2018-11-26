@@ -23,29 +23,29 @@ export class EnderecoService {
     const endereco = {
       proprietario: proprietario,
       cep: cep,
-      logradouro: logradouro, //Endereço
+      logradouro: logradouro, // Endereço
       numero: numero,
       complemento: complemento,
       bairro: bairro,
-      localidade: localidade, //cidade
+      localidade: localidade, // cidade
       uf: uf, // Estado
     };
     return this.http.post(`${this.uri}/Endereco/add`, endereco);
   }
 
-  updateEndereco(proprietario, idcep, cep, logradouro, numero, complemento, bairro, localidade, uf) {
+  updateEndereco(nomeProprietario, proprietario, idcep, cep, logradouro, numero, complemento, bairro, localidade, uf) {
     const endereco = {
       proprietario: proprietario,
       cep: cep,
-      logradouro: logradouro, //Endereço
+      logradouro: logradouro, // Endereço
       numero: numero,
       complemento: complemento,
       bairro: bairro,
-      localidade: localidade, //cidade
+      localidade: localidade, // cidade
       uf: uf // Estado
 
     };
-    return this.http.post(`${this.uri}/Endereco/update/${idcep}/${proprietario}`, endereco);
+    return this.http.post(`${this.uri}/Endereco/update/${idcep}/${nomeProprietario}`, endereco);
   }
 
   deleteEndereco(cep, proprietario) {
@@ -56,11 +56,11 @@ export class EnderecoService {
     return new Promise((resolve, reject) => {
       this.http1.get(`https://viacep.com.br/ws/${cep}/json/`)
         .subscribe((result: any) => {
-          resolve(result.json())
+          resolve(result.json());
         },
           (error) => {
             reject(error.json());
-          })
-    })
+          });
+    });
   }
 }

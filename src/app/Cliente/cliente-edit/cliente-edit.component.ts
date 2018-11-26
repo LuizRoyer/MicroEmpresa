@@ -14,6 +14,7 @@ import { IEndereco } from 'interface/endereco.model';
 export class ClienteEditComponent implements OnInit {
   id: String;
   idCep: String;
+  nomeCliente: String;
   iCliente: any = {};
   iendereco: any = {};
   Endereco: any = {};
@@ -63,6 +64,7 @@ export class ClienteEditComponent implements OnInit {
           this.updateForm.get('email').setValue(this.iCliente.email);
           this.updateForm.get('cep').setValue(this.iCliente.cep);
           this.idCep = this.iCliente.cep;
+          this.nomeCliente = this.iCliente.nome;
           this.enderecoService
             .getIdEndereco(this.iCliente.cep, this.iCliente.nome)
             .subscribe(ress => {
@@ -114,6 +116,7 @@ export class ClienteEditComponent implements OnInit {
 
     this.enderecoService
       .updateEndereco(
+        this.nomeCliente,
         nome,
         this.idCep,
         cep,
